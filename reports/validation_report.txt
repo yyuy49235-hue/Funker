@@ -1,0 +1,30 @@
+UNCHANGED | images/Ratings.xml | 832x1756->832x1756 | frames=8 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Agoti_Cutscene_A.xml | 8192x8192->2048x2048 | frames=104 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Agoti_Cutscene_B.xml | 8192x8192->2048x2048 | frames=125 | names_order_ok=True | simulated_bad_bounds=0
+UNCHANGED | images/agoti/images/Agoti_Micless.xml | 2048x2048->2048x2048 | frames=14 | names_order_ok=True | simulated_bad_bounds=0
+UNCHANGED | images/agoti/images/BF_Dialogue.xml | 2048x1024->2048x1024 | frames=14 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Dialogue_Box.xml | 4096x4096->2048x2048 | frames=40 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/LoudSpeaker_Moving.xml | 8192x8192->2048x2048 | frames=15 | names_order_ok=True | simulated_bad_bounds=0
+UNCHANGED | images/agoti/images/Pillar_1.xml | 2048x2048->2048x2048 | frames=4 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Pillar_BG.xml | 8192x8192->2048x2048 | frames=67 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Pillar_BG_Stage.xml | 8192x8192->2048x2048 | frames=9 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/Pillar_FG.xml | 8192x8192->2048x2048 | frames=76 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/The_void.xml | 8192x8192->2048x2048 | frames=76 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/agoti/images/slidePortraits/Dialogue_Box_2.xml | 4096x2048->2048x1024 | frames=40 | names_order_ok=True | simulated_bad_bounds=0
+UNCHANGED | images/agoti/images/slidePortraits/Dialogue_Names.xml | 2048x1024->2048x1024 | frames=160 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/AGOTI.xml | 8192x4096->2048x1024 | frames=74 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/Alt_Agoti_Sprites_B.xml | 8192x8192->2048x2048 | frames=75 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/BOYFRIEND.xml | 8192x4096->2048x1024 | frames=452 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/DADDY_DEAREST.xml | 4096x2048->2048x1024 | frames=45 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/GF_assets.xml | 8192x8192->2048x2048 | frames=252 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/GF_rock.xml | 8192x8192->2048x2048 | frames=230 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/characters/bfCar.xml | 4096x4096->2048x2048 | frames=327 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/dialogue/Agoti_Dialogue.xml | 4096x2048->2048x1024 | frames=32 | names_order_ok=True | simulated_bad_bounds=0
+RESIZED | images/menucharacters/agotiMenu.xml | 2484x931->2048x768 | frames=15 | names_order_ok=True | simulated_bad_bounds=0
+
+SUMMARY
+checked=23
+resized=18
+bad_bounds=0
+name_mismatches=0
+errors=0

@@ -1,0 +1,723 @@
+========== Agoti ==========
+Files: 163
+Total size: 70.80 MB
+Images: 25.27 MB
+Audio: 44.63 MB
+Video: 0.00 MB
+File types: {'.png': 43, '.ogg': 36, '.json': 33, '.xml': 23, '.txt': 20, '.lua': 8}
+
+LARGEST 10 FILES:
+3.19 MB | music/freakyMenu.ogg
+2.43 MB | songs/a.g.o.t.i/Inst_LOFI.ogg
+2.42 MB | images/characters/bfCar.png
+2.39 MB | images/characters/GF_assets.png
+2.39 MB | songs/a.g.o.t.i/Inst.ogg
+2.34 MB | songs/parasite/Inst.ogg
+2.32 MB | songs/screenplay/Inst.ogg
+2.31 MB | songs/a.g.o.t.i/Voices.ogg
+2.30 MB | songs/parasite/Inst_LOFI.ogg
+2.27 MB | songs/screenplay/Voices.ogg
+
+IMAGES OVER 2048px:
+None
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Flipped Out 1.0.5 ==========
+Files: 388
+Total size: 220.73 MB
+Images: 116.94 MB
+Audio: 97.29 MB
+Video: 4.05 MB
+File types: {'.png': 108, '.json': 95, '.lua': 94, '.ogg': 44, '.xml': 35, '.txt': 10, '.ttf': 1, '.mp4': 1}
+
+LARGEST 10 FILES:
+21.69 MB | images/characters/FLIPPY_bloody_HIDEN.png
+14.71 MB | images/stages/fullhardy/Maze.png
+7.16 MB | songs/compass-og/Inst.ogg
+7.05 MB | songs/compass-og/Voices.ogg
+5.66 MB | images/characters/Shell_Shanked.png
+5.36 MB | songs/funny/Inst.ogg
+5.22 MB | songs/funny/Voices.ogg
+4.96 MB | songs/overkill-og/Inst.ogg
+4.87 MB | images/characters/FLIPPY_CRAZY_NEW.png
+4.53 MB | songs/overkill-og/Voices.ogg
+
+IMAGES OVER 2048px:
+8192x4096 | 21.69 MB | images/characters/FLIPPY_bloody_HIDEN.png
+8192x8192 | 14.71 MB | images/stages/fullhardy/Maze.png
+5497x5273 | 5.66 MB | images/characters/Shell_Shanked.png
+4505x4398 | 4.87 MB | images/characters/FLIPPY_CRAZY_NEW.png
+4096x4096 | 4.02 MB | images/characters/FLIPPY_crazy.png
+8192x8192 | 3.40 MB | images/characters/FLIPPY_minus_OG.png
+8192x4096 | 3.06 MB | images/stages/phase3/Fire.png
+3773x3766 | 3.03 MB | images/characters/FLIPPY_CRAZY_GHOST.png
+3872x2642 | 2.96 MB | images/stages/minus-og/bg.png
+3872x2642 | 2.96 MB | images/stages/minus/bg.png
+4096x3066 | 2.75 MB | images/characters/FLIPPY_kapow.png
+4096x4096 | 2.62 MB | images/characters/tigerbf.png
+4096x2048 | 2.42 MB | images/characters/FLIPPY_Cicerega.png
+4096x4096 | 2.41 MB | images/characters/FLIPPY_minus.png
+4096x2048 | 2.05 MB | images/characters/flipdark.png
+4096x2048 | 1.95 MB | images/characters/FLIPPY_bloody.png
+3872x2642 | 1.67 MB | images/stages/minus-og/sky.png
+3872x2642 | 1.67 MB | images/stages/minus/sky.png
+2560x1400 | 1.66 MB | images/stages/phase4/bg1.png
+2560x1400 | 1.63 MB | images/stages/shanked/bg.png
+4096x2048 | 1.62 MB | images/characters/FLIPPY_onslaught.png
+2560x1400 | 1.57 MB | images/stages/phase2/bg.png
+2403x2152 | 1.56 MB | images/characters/BOYFRIEND.png
+2560x1400 | 1.50 MB | images/stages/slaughter-og/bg.png
+2560x1400 | 1.38 MB | images/stages/kapow/bg.png
+3000x2354 | 1.34 MB | images/stages/phase4/bg.png
+2560x1400 | 1.32 MB | images/stages/phase1/bg.png
+4096x2048 | 1.31 MB | images/characters/FLIPPY_alt.png
+2755x2631 | 1.15 MB | images/characters/BOYFRIEND-DEAD.png
+2114x1993 | 0.94 MB | images/characters/BOYFRIEND_MINUS.png
+2560x1400 | 0.92 MB | images/stages/phase3/bg.png
+2109x1632 | 0.83 MB | images/characters/MEANBF-DEAD.png
+2560x1400 | 0.74 MB | images/stages/phase3/ground.png
+2280x1770 | 0.73 MB | images/characters/MEANBF.png
+2560x1400 | 0.55 MB | images/stages/alt/bg.png
+2560x1400 | 0.25 MB | images/stages/phase2/table.png
+2560x1400 | 0.13 MB | images/stages/phase1/table.png
+2560x1400 | 0.06 MB | images/stages/kapow/lights.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Garcello Psych Engine ==========
+Files: 121
+Total size: 48.47 MB
+Images: 23.33 MB
+Audio: 23.09 MB
+Video: 0.46 MB
+File types: {'.json': 31, '.png': 24, '.txt': 20, '(no extension)': 14, '.lua': 9, '.xml': 9, '.ogg': 8, '.sfk': 4, '.mp4': 1, '.asd': 1}
+
+LARGEST 10 FILES:
+4.58 MB | images/characters/garcellotired_assets.png
+4.28 MB | songs/nerves/Inst.ogg
+4.10 MB | images/characters/garcelloghosty_assets.png
+4.02 MB | songs/release/Inst.ogg
+4.02 MB | images/characters/garcellodead_assets.png
+3.94 MB | songs/release/Voices.ogg
+3.74 MB | images/characters/garcello_assets.png
+3.48 MB | songs/headache/Inst.ogg
+2.72 MB | images/menucharacters/Menu_Garcello.png
+2.67 MB | songs/nerves/Voices.ogg
+
+IMAGES OVER 2048px:
+8192x4096 | 4.58 MB | images/characters/garcellotired_assets.png
+8192x4096 | 4.10 MB | images/characters/garcelloghosty_assets.png
+8192x4096 | 4.02 MB | images/characters/garcellodead_assets.png
+8192x4096 | 3.74 MB | images/characters/garcello_assets.png
+8192x4096 | 2.72 MB | images/menucharacters/Menu_Garcello.png
+2560x1400 | 0.47 MB | images/stages/garStage.png
+2560x1400 | 0.45 MB | images/stages/garStagebgRise.png
+2560x1400 | 0.45 MB | images/stages/garStageRise.png
+2560x1400 | 0.44 MB | images/stages/garStagealt.png
+8192x4096 | 0.40 MB | images/stages/garSmokeBG.png
+8192x4096 | 0.40 MB | images/stages/garSmoke.png
+2560x1400 | 0.23 MB | images/stages/garStagebg.png
+2560x1400 | 0.10 MB | images/stages/garStagebgAlt.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Girl's Night ==========
+Files: 162
+Total size: 50.47 MB
+Images: 22.33 MB
+Audio: 27.91 MB
+Video: 0.00 MB
+File types: {'.txt': 73, '.lua': 54, '.png': 12, '.json': 10, '.ogg': 8, '.xml': 3, '.mp3': 2}
+
+LARGEST 10 FILES:
+10.63 MB | images/characters/ChibiGF-V2.png
+10.13 MB | music/freakyMenu.ogg
+7.83 MB | images/characters/NENE.png
+3.29 MB | songs/after-hours/inst.ogg
+3.07 MB | songs/after-hours/Voices-Opponent.ogg
+2.91 MB | songs/after-hours/Voices-Player.ogg
+2.78 MB | songs/girls-night/inst.ogg
+2.75 MB | songs/girls-night/gf and nene.mp3
+1.10 MB | songs/girls-night/inst.mp3
+0.96 MB | images/v2buildings1.png
+
+IMAGES OVER 2048px:
+8192x4096 | 10.63 MB | images/characters/ChibiGF-V2.png
+8192x4096 | 7.83 MB | images/characters/NENE.png
+3000x2000 | 0.96 MB | images/v2buildings1.png
+3000x2000 | 0.83 MB | images/v2normaltint2.png
+3000x2200 | 0.77 MB | images/v2normalstagelarger.png
+3000x2000 | 0.58 MB | images/v2normaltint1.png
+3000x2000 | 0.34 MB | images/v2buildings2.png
+3000x2200 | 0.17 MB | images/v2normalglow.png
+3000x2000 | 0.13 MB | images/v2normalmoon.png
+4096x4096 | 0.02 MB | images/characters/nobody.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Happy2K23 - Krimson K. (Playable) ==========
+Files: 91
+Total size: 42.87 MB
+Images: 33.54 MB
+Audio: 8.91 MB
+Video: 0.00 MB
+File types: {'.png': 32, '.txt': 20, '.xml': 17, '.json': 15, '.lua': 5, '.ogg': 2}
+
+LARGEST 10 FILES:
+7.51 MB | images/characters/GrinMouse.png
+4.55 MB | songs/happy-2k23/Inst.ogg
+4.44 MB | images/characters/BOYFRIEND_DARK.png
+4.36 MB | songs/happy-2k23/Voices.ogg
+3.51 MB | images/characters/bipolarmouse_assets.png
+3.16 MB | images/characters/BOYFRIEND_BLACKnWHITE.png
+3.04 MB | images/characters/other/mouse2_asset.png
+2.53 MB | images/backgrounds/street-icmation!/cenaan.png
+2.25 MB | images/characters/happymouse2_assets.png
+2.11 MB | images/characters/the/BOYFRIEND.png
+
+IMAGES OVER 2048px:
+8033x3448 | 7.51 MB | images/characters/GrinMouse.png
+8192x4096 | 4.44 MB | images/characters/BOYFRIEND_DARK.png
+8192x4096 | 3.51 MB | images/characters/bipolarmouse_assets.png
+8192x4096 | 3.16 MB | images/characters/BOYFRIEND_BLACKnWHITE.png
+8192x4096 | 3.04 MB | images/characters/other/mouse2_asset.png
+2560x1400 | 2.53 MB | images/backgrounds/street-icmation!/cenaan.png
+8192x4096 | 2.25 MB | images/characters/happymouse2_assets.png
+4096x2820 | 2.11 MB | images/characters/the/BOYFRIEND.png
+8192x4096 | 1.69 MB | images/characters/other/mouse1_asset.png
+8192x4096 | 1.28 MB | images/characters/happymouse_assets.png
+5492x1372 | 0.91 MB | images/backgrounds/street1/street1Extended.png
+4096x4096 | 0.07 MB | images/characters/GF_invisible_assets.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Last Determined zPort ==========
+Files: 118
+Total size: 18.60 MB
+Images: 5.26 MB
+Audio: 12.65 MB
+Video: 0.00 MB
+File types: {'.png': 43, '.json': 28, '.lua': 15, '.xml': 14, '.ogg': 12, '.txt': 4, '.ttf': 2}
+
+LARGEST 10 FILES:
+2.36 MB | songs/LOVE-v3/Inst.ogg
+1.93 MB | songs/start-of-a-tale-new-inst/Inst.ogg
+1.59 MB | songs/start-of-a-tale-oldv2/Inst.ogg
+1.57 MB | songs/start-of-a-tale/Inst.ogg
+1.55 MB | songs/the-finale/Inst.ogg
+1.48 MB | songs/start-of-a-tale-oldv3/Inst.ogg
+1.23 MB | songs/LOVE-v2/Inst.ogg
+1.12 MB | images/noteSplashes/noteSplashes.png
+0.91 MB | songs/start-of-a-tale-teaser/Inst.ogg
+0.64 MB | images/characters/agarra.png
+
+IMAGES OVER 2048px:
+2102x1813 | 1.12 MB | images/noteSplashes/noteSplashes.png
+3030x3088 | 0.64 MB | images/characters/agarra.png
+2688x1787 | 0.52 MB | images/FlowerTrans.png
+1724x2077 | 0.23 MB | images/characters/ldsans.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Nocturnal Protocol (Fan Recreation) ==========
+Files: 126
+Total size: 78.27 MB
+Images: 66.09 MB
+Audio: 11.98 MB
+Video: 0.00 MB
+File types: {'.png': 42, '.txt': 33, '.json': 22, '.xml': 14, '.lua': 11, '.ogg': 3, '.lang': 1}
+
+LARGEST 10 FILES:
+18.05 MB | images/characters/tinkydance.png
+16.64 MB | images/characters/tinkyturn.png
+5.18 MB | images/characters/guardian.png
+4.76 MB | images/characters/guardianfinal.png
+4.73 MB | songs/nocturnal-protocol/Inst.ogg
+3.98 MB | songs/nocturnal-protocol/Voices-Player.ogg
+3.27 MB | songs/nocturnal-protocol/Voices-Opponent.ogg
+2.94 MB | images/characters/guardianbd.png
+1.99 MB | images/characters/guardianrun.png
+1.91 MB | images/characters/tinkyicfy.png
+
+IMAGES OVER 2048px:
+5671x4855 | 18.05 MB | images/characters/tinkydance.png
+6104x4691 | 16.64 MB | images/characters/tinkyturn.png
+3085x2176 | 5.18 MB | images/characters/guardian.png
+2253x2037 | 4.76 MB | images/characters/guardianfinal.png
+2776x2112 | 2.94 MB | images/characters/guardianbd.png
+2307x1625 | 1.99 MB | images/characters/guardianrun.png
+2295x1835 | 1.82 MB | images/characters/tinkyrun.png
+2489x1886 | 1.81 MB | images/characters/tinkybd.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== QTMOD ==========
+Files: 250
+Total size: 267.68 MB
+Images: 154.51 MB
+Audio: 104.22 MB
+Video: 0.00 MB
+File types: {'.png': 85, '.json': 51, '.ogg': 37, '.txt': 34, '.xml': 28, '.lua': 11, '(no extension)': 2, '.lang': 1, '.pdn': 1}
+
+LARGEST 10 FILES:
+20.28 MB | images/characters/qt-port/qt-kbV2.png
+13.80 MB | images/characters/qt-port/robot_404.png
+13.18 MB | images/hazard/inhuman-port/backPulsing.png
+11.15 MB | images/characters/qt-port/classic/robot_classic_404.png
+10.07 MB | images/characters/qt-port/robot.png
+8.88 MB | images/characters/qt-port/classic/robot_classic.png
+8.59 MB | images/characters/qt-port/GF_assets_404.png
+8.21 MB | images/characters/qt-port/robot_404-angry.png
+7.60 MB | songs/termination-classic/Inst.ogg
+7.60 MB | songs/termination/Inst-old.ogg
+
+IMAGES OVER 2048px:
+8192x8192 | 20.28 MB | images/characters/qt-port/qt-kbV2.png
+8192x8192 | 13.80 MB | images/characters/qt-port/robot_404.png
+4096x8192 | 13.18 MB | images/hazard/inhuman-port/backPulsing.png
+4096x8192 | 11.15 MB | images/characters/qt-port/classic/robot_classic_404.png
+8192x8192 | 10.07 MB | images/characters/qt-port/robot.png
+4096x8192 | 8.88 MB | images/characters/qt-port/classic/robot_classic.png
+8192x8192 | 8.59 MB | images/characters/qt-port/GF_assets_404.png
+4096x8192 | 8.21 MB | images/characters/qt-port/robot_404-angry.png
+4096x8192 | 7.26 MB | images/hazard/qt-port/stage/TV_V5.png
+4096x8192 | 6.61 MB | images/hazard/qt-port/stage/TV_V4.png
+8192x4096 | 5.89 MB | images/characters/qt-port/BOYFRIEND_404.png
+4096x4096 | 4.46 MB | images/characters/qt-port/qt_annoyed.png
+8192x8192 | 4.11 MB | images/hazard/qt-port/cutscenev3.png
+2440x1400 | 3.78 MB | images/hazard/inhuman-port/cheat-bg.png
+2048x4096 | 3.37 MB | images/characters/qt-port/classic/qt_classic.png
+2560x1400 | 2.85 MB | images/hazard/qt-port/stage/streetError.png
+2560x1400 | 2.62 MB | images/hazard/inhuman-port/back-Gradient.png
+4096x4096 | 2.41 MB | images/characters/qt-port/qt.png
+4096x4096 | 2.15 MB | images/hazard/qt-port/stage/horrorbg.png
+4096x4096 | 2.08 MB | images/hazard/qt-port/attackv6.png
+8192x8192 | 0.83 MB | images/hazard/qt-port/stage/Gas_Release.png
+4096x4096 | 0.70 MB | images/hazard/qt-port/sawkillanimation2.png
+4096x4096 | 0.60 MB | images/hazard/inhuman-port/ameliaTaunt.png
+2560x543 | 0.53 MB | images/hazard/qt-port/stage/streetFrontError.png
+2560x1400 | 0.45 MB | images/hazard/qt-port/stage/streetBack.png
+5120x2800 | 0.39 MB | images/hazard/qt-port/FinalScreen.png
+2560x1400 | 0.38 MB | images/hazard/qt-port/stage/streetBackCute.png
+2560x1400 | 0.32 MB | images/hazard/qt-port/stage/streetBackError.png
+2560x542 | 0.31 MB | images/hazard/qt-port/stage/streetFront.png
+2440x1400 | 0.30 MB | images/hazard/inhuman-port/alert-vignette.png
+2560x543 | 0.30 MB | images/hazard/qt-port/stage/streetFrontCute.png
+2440x1400 | 0.29 MB | images/hazard/inhuman-port/vignette.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== sky port ==========
+Files: 91
+Total size: 28.91 MB
+Images: 15.00 MB
+Audio: 13.62 MB
+Video: 0.00 MB
+File types: {'.json': 25, '.png': 22, '.ogg': 15, '.xml': 14, '.lua': 12, '.txt': 2, '.fla': 1}
+
+LARGEST 10 FILES:
+3.64 MB | images/bg_manifest.png
+3.45 MB | images/characters/sky_annoyed_assets.png
+2.35 MB | images/menucharacters/menu_Sky.png
+2.25 MB | songs/manifest/Inst.ogg
+2.20 MB | songs/manifest/Voices.ogg
+1.95 MB | songs/wife-forever/Inst.ogg
+1.91 MB | songs/wife-forever/Voices.ogg
+1.69 MB | songs/sky/Inst.ogg
+1.66 MB | songs/sky/Voices.ogg
+1.43 MB | images/floorManifest.png
+
+IMAGES OVER 2048px:
+8192x4096 | 3.64 MB | images/bg_manifest.png
+8192x8192 | 3.45 MB | images/characters/sky_annoyed_assets.png
+8192x4096 | 2.35 MB | images/menucharacters/menu_Sky.png
+8192x8192 | 1.43 MB | images/floorManifest.png
+8192x4096 | 0.98 MB | images/characters/sky_assets.png
+4096x4096 | 0.88 MB | images/characters/sky_mad_assets.png
+4096x4096 | 0.84 MB | images/characters/gf.png
+8192x8192 | 0.59 MB | images/bg_annoyed.png
+8192x4096 | 0.13 MB | images/bg_normal.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Tabi Psych Engine ==========
+Files: 133
+Total size: 379.09 MB
+Images: 48.93 MB
+Audio: 21.16 MB
+Video: 308.05 MB
+File types: {'.png': 40, '.json': 32, '.xml': 27, '.txt': 20, '.ogg': 6, '.lua': 4, '.mp4': 4}
+
+LARGEST 10 FILES:
+140.78 MB | videos/genocide.mp4
+117.16 MB | videos/my-battle.mp4
+49.98 MB | videos/last-chance.mp4
+7.35 MB | images/characters/GF_TABI.png
+5.79 MB | images/characters/BF_exp.png
+5.38 MB | images/characters/BOYFRIEND_TABI.png
+4.72 MB | songs/last-chance/Inst.ogg
+4.64 MB | images/characters/tabi genocide.png
+4.64 MB | images/characters/MadTabi.png
+4.59 MB | songs/last-chance/Voices.ogg
+
+IMAGES OVER 2048px:
+8192x8192 | 7.35 MB | images/characters/GF_TABI.png
+8192x4096 | 5.79 MB | images/characters/BF_exp.png
+8192x4096 | 5.38 MB | images/characters/BOYFRIEND_TABI.png
+8192x4096 | 4.64 MB | images/characters/tabi genocide.png
+8192x4096 | 4.64 MB | images/characters/MadTabi.png
+4096x4096 | 3.94 MB | images/fireglow.png
+8192x4096 | 2.52 MB | images/characters/TABI.png
+8192x8192 | 2.45 MB | images/characters/BF_Knife_death.png
+2560x1400 | 1.75 MB | images/notnormal.png
+2560x1400 | 1.41 MB | images/tabi_stage.png
+2560x1400 | 1.41 MB | images/normal_stage.png
+2560x1400 | 1.17 MB | images/tabi_genocide_stage.png
+2560x1400 | 0.26 MB | images/glowyfurniture.png
+2560x1400 | 0.24 MB | images/boards.png
+8192x8192 | 0.01 MB | images/characters/genocide_GF.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== tricky ==========
+Files: 125
+Total size: 86.78 MB
+Images: 32.36 MB
+Audio: 16.64 MB
+Video: 36.98 MB
+File types: {'.json': 29, '.txt': 28, '.png': 26, '.ogg': 13, '.lua': 11, '.xml': 11, '.mp4': 6, '.lang': 1}
+
+LARGEST 10 FILES:
+20.48 MB | videos/TricksterMan.mp4
+7.97 MB | images/characters/tricky.png
+6.80 MB | images/menucharacters/menu_tricky.png
+5.85 MB | videos/HELLCLOWN_ENGADGED.mp4
+5.59 MB | images/characters/HellclwnTricky.png
+3.75 MB | videos/testVideo.mp4
+3.22 MB | videos/BigRicky.mp4
+3.21 MB | songs/Hellclown/Inst.ogg
+2.84 MB | images/characters/EXTRICKY.png
+2.80 MB | videos/HankFuckingShootsTricky.mp4
+
+IMAGES OVER 2048px:
+4096x4096 | 7.97 MB | images/characters/tricky.png
+3277x3277 | 6.80 MB | images/menucharacters/menu_tricky.png
+3602x4435 | 5.59 MB | images/characters/HellclwnTricky.png
+3686x3686 | 2.84 MB | images/characters/EXTRICKY.png
+4096x2048 | 2.47 MB | images/characters/TrickyMask.png
+4096x2048 | 1.75 MB | images/characters/signDeath.png
+2458x1004 | 0.51 MB | images/stages/island/islandRed.png
+2458x1004 | 0.47 MB | images/stages/island/island.png
+1536x2788 | 0.27 MB | images/customNotes/HALO.png
+2458x1229 | 0.25 MB | images/stages/island/floor.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Vs zRamirez Lua Port ==========
+Files: 398
+Total size: 433.00 MB
+Images: 76.58 MB
+Audio: 119.64 MB
+Video: 233.97 MB
+File types: {'.png': 133, '.json': 68, '.lua': 59, '.txt': 43, '.xml': 41, '.ogg': 23, '.html': 10, '.mp4': 10, '.mp3': 8, '.lang': 1, '.ttf': 1, '.frag': 1}
+
+LARGEST 10 FILES:
+36.61 MB | videos/bb-fucked_sub.mp4
+35.17 MB | videos/bb-fucked.mp4
+23.85 MB | videos/fr_sub.mp4
+23.28 MB | videos/over_sub.mp4
+23.22 MB | videos/over.mp4
+21.87 MB | videos/fr.mp4
+19.56 MB | videos/inter_sub.mp4
+18.67 MB | videos/inter.mp4
+17.17 MB | videos/bb_sub.mp4
+14.57 MB | videos/bb.mp4
+
+IMAGES OVER 2048px:
+8192x4096 | 6.46 MB | images/characters/zRamirez-Classic2.png
+8192x4096 | 6.46 MB | images/characters/BOYFRIEND.png
+4096x8192 | 3.84 MB | images/characters/pico_assets.png
+2516x1318 | 3.76 MB | images/StageZ/idk.png
+2516x1318 | 3.76 MB | images/StageHotfix/idk.png
+4096x4096 | 3.49 MB | images/characters/Classic-zRamirez.png
+8192x4096 | 3.06 MB | images/characters/GF_assets.png
+2560x1400 | 2.62 MB | images/back-Gradient.png
+4096x4096 | 2.51 MB | images/characters/pico-dead.png
+4096x8192 | 2.47 MB | images/characters/zRamirez-v2.png
+4096x8192 | 2.44 MB | images/characters/Ara.png
+2048x8192 | 2.34 MB | images/characters/OLD-zRamirez.png
+4096x8192 | 2.32 MB | images/characters/zRamirez.png
+4096x8192 | 2.32 MB | images/StageHotfix/zRamirez.png
+4096x8192 | 2.32 MB | images/characters/zRamirez-v2-old.png
+4096x4096 | 2.27 MB | images/characters/Scared-BF.png
+8192x4096 | 2.22 MB | images/characters/BOYFRIEND_DEAD.png
+4096x4096 | 1.73 MB | images/characters/DrkFon.png
+4096x2820 | 1.41 MB | images/characters/BOYFRIENDOG.png
+4096x4096 | 1.32 MB | images/characters/zRamirez-v2-older.png
+4096x4096 | 1.17 MB | images/characters/bf-dj.png
+2048x4096 | 1.17 MB | images/characters/DrkFon-V3.png
+2048x4096 | 1.04 MB | images/logoBumpin.png
+3273x1985 | 1.04 MB | images/Tree-Stage/full stage.png
+4096x4096 | 0.88 MB | images/StageZ/gfRami.png
+2048x4096 | 0.69 MB | images/characters/gf-drkfon.png
+1024x4096 | 0.65 MB | images/characters/GF-Ramirez-V3.png
+3950x1680 | 0.60 MB | images/characters/DADDY_DEAREST.png
+3273x1985 | 0.56 MB | images/Tree-Stage/tree.png
+3273x1985 | 0.49 MB | images/Tree-Stage/sky.png
+2048x4096 | 0.45 MB | images/StageZFire/Fondo-Stage.png
+4096x4096 | 0.44 MB | images/StageZFire/Fire.png
+3572x2311 | 0.37 MB | images/StageD/Drkfon-stage.png
+3273x1985 | 0.32 MB | images/Tree-Stage/bush.png
+2390x691 | 0.14 MB | images/StageZFire/StageExtra.png
+2390x691 | 0.14 MB | images/StageHotfix/Adornos.png
+2400x691 | 0.11 MB | images/StageZ/Adornos.png
+2400x691 | 0.11 MB | images/StageHotfix/AdornosOLD.png
+2514x346 | 0.07 MB | images/StageZFire/StageFront.png
+2516x1318 | 0.07 MB | images/StageHotfix/StageBack-Sunset.png
+2516x1318 | 0.06 MB | images/StageZ/StageBack.png
+2516x1318 | 0.06 MB | images/StageHotfix/StageBackOLD.png
+2516x1318 | 0.06 MB | images/StageHotfix/StageBack.png
+2516x1318 | 0.06 MB | images/StageHotfix/StageBack-Night.png
+2514x346 | 0.06 MB | images/StageHotfix/StageFront.png
+2516x1318 | 0.04 MB | images/StageZFire/StageBack.png
+2514x335 | 0.03 MB | images/StageZ/StageFrontOld.png
+2514x335 | 0.03 MB | images/StageZ/StageFront.png
+2514x335 | 0.03 MB | images/StageHotfix/StageFrontOLD.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== vswhiitypsych ==========
+Files: 1072
+Total size: 379.21 MB
+Images: 98.11 MB
+Audio: 106.34 MB
+Video: 0.00 MB
+File types: {'.dll': 366, '.png': 291, '.ogg': 137, '.json': 116, '.xml': 101, '.txt': 50, '.jar': 2, '.lua': 2, '.ico': 1, '.ndll': 1, '.exe': 1, '.zip': 1, '.offset': 1, '.otf': 1, '.ttf': 1}
+
+LARGEST 10 FILES:
+28.41 MB | PsychEngine.exe
+16.61 MB | plugins/gui/libqt_plugin.dll
+16.44 MB | plugins/codec/libavcodec_plugin.dll
+7.88 MB | mods/My-Mod/images/characters/WhittyCrazy.png
+7.84 MB | assets/shared/images/characters/gfChristmas.png
+7.80 MB | lime.ndll
+7.48 MB | assets/shared/music/tea-time.ogg
+7.28 MB | mods/My-Mod/images/BallisticBackground.png
+4.76 MB | assets/shared/images/characters/mom_dad_christmas_assets.png
+4.68 MB | plugins/codec/libx265_plugin.dll
+
+IMAGES OVER 2048px:
+8192x8192 | 7.88 MB | mods/My-Mod/images/characters/WhittyCrazy.png
+2500x7900 | 7.84 MB | assets/shared/images/characters/gfChristmas.png
+8192x8192 | 7.28 MB | mods/My-Mod/images/BallisticBackground.png
+8192x5800 | 4.76 MB | assets/shared/images/characters/mom_dad_christmas_assets.png
+6420x7800 | 4.30 MB | assets/week2/images/halloween_bg.png
+8000x6000 | 3.43 MB | assets/shared/images/characters/GF_assets.png
+8192x3500 | 3.17 MB | assets/shared/images/characters/picoSpeaker.png
+8192x4096 | 2.50 MB | mods/My-Mod/images/menucharacters/campaign_menu_UI_characters.png
+3280x2800 | 2.34 MB | assets/week7/images/smokeRight.png
+3980x3760 | 2.25 MB | assets/shared/images/characters/bfAndGF.png
+4096x1600 | 2.12 MB | assets/week7/images/smokeLeft.png
+8000x2430 | 2.11 MB | assets/shared/images/characters/bfHoldingGF-DEAD.png
+8000x2560 | 1.91 MB | assets/shared/images/characters/momCar.png
+4096x3750 | 1.86 MB | assets/shared/images/characters/BOYFRIEND_DEAD.png
+7500x2580 | 1.81 MB | assets/shared/images/characters/gfTankmen.png
+4096x2048 | 1.76 MB | assets/shared/images/RiverBump.png
+4096x2820 | 1.41 MB | assets/shared/images/characters/BOYFRIEND.png
+4096x4096 | 1.38 MB | mods/My-Mod/images/titleEnter.png
+4096x4096 | 1.35 MB | assets/shared/images/characters/tankmanCaptain.png
+8000x2900 | 1.24 MB | assets/shared/images/characters/Monster_Assets.png
+3800x3950 | 1.12 MB | assets/shared/images/characters/gfCar.png
+3980x2800 | 1.05 MB | assets/week5/images/christmas/bottomBop.png
+4096x2560 | 1.03 MB | assets/shared/images/characters/Mom_Assets.png
+4096x1969 | 1.03 MB | assets/week7/images/cutscenes/picoAppears/spritemap1.png
+4064x2200 | 1.01 MB | assets/shared/images/characters/bfCar.png
+4096x2048 | 0.97 MB | mods/My-Mod/images/characters/WhittySprites.png
+3720x2040 | 0.97 MB | assets/shared/images/characters/Pico_FNF_assetss.png
+2625x1613 | 0.96 MB | assets/week5/images/christmas/evilBG.png
+8190x3600 | 0.76 MB | assets/shared/images/characters/monsterChristmas.png
+3767x1775 | 0.71 MB | assets/week5/images/christmas/bgWalls.png
+3660x2670 | 0.71 MB | assets/shared/images/gfDanceTitle.png
+2196x1600 | 0.64 MB | assets/week4/images/limo/bgLimo.png
+4096x1550 | 0.62 MB | assets/week5/images/christmas/santa.png
+3950x1680 | 0.60 MB | assets/shared/images/characters/DADDY_DEAREST.png
+4024x1700 | 0.52 MB | assets/shared/images/characters/spooky_kids_assets.png
+4096x1280 | 0.52 MB | assets/shared/images/dialogue/BF_Dialogue.png
+4096x3600 | 0.47 MB | assets/week7/images/tankmanKilled1.png
+2440x1400 | 0.46 MB | mods/My-Mod/images/thefunnyeffect.png
+4000x1350 | 0.45 MB | assets/shared/images/characters/bfChristmas.png
+3980x1280 | 0.38 MB | assets/shared/images/dialogue/GF_Dialogue.png
+2560x1400 | 0.34 MB | mods/My-Mod/images/whittyBack.png
+2114x1075 | 0.20 MB | assets/week2/images/halloween_bg_low.png
+4096x3100 | 0.18 MB | assets/shared/images/speech_bubble.png
+2280x1280 | 0.17 MB | assets/week5/images/christmas/upperBop.png
+4096x512 | 0.15 MB | assets/week3/images/philly/train.png
+2560x1400 | 0.12 MB | assets/week1/images/stagecurtains.png
+2560x581 | 0.11 MB | assets/week1/images/stagefront.png
+3591x1538 | 0.11 MB | assets/week6/images/weeb/weebTrees.png
+3780x3180 | 0.08 MB | assets/week6/images/weeb/animatedEvilSchool.png
+3502x1775 | 0.05 MB | assets/week5/images/christmas/bgEscalator.png
+2560x581 | 0.04 MB | mods/My-Mod/images/whittyFront.png
+2560x1400 | 0.01 MB | assets/week1/images/stageback.png
+2624x262 | 0.01 MB | assets/week5/images/christmas/evilSnow.png
+2984x252 | 0.00 MB | assets/week5/images/christmas/fgSnow.png
+2075x235 | 0.00 MB | assets/week7/images/tankClouds.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== Wii Funkin Fanmade Psych Engine Port Optimizado ==========
+Files: 299
+Total size: 61.97 MB
+Images: 28.00 MB
+Audio: 28.86 MB
+Video: 0.00 MB
+File types: {'.json': 119, '.png': 86, '.xml': 36, '.ogg': 33, '.lua': 21, '.txt': 3, '.frag': 1}
+
+LARGEST 10 FILES:
+3.22 MB | images/volcano/volcano.png
+2.55 MB | images/characters/matt_hurt2.png
+2.27 MB | images/matt_hurt2.png
+1.84 MB | songs/king-hit-fefe/Inst.ogg
+1.84 MB | songs/king-hit/Inst.ogg
+1.56 MB | songs/boxing-match/Inst.ogg
+1.41 MB | songs/endless-battle/Inst.ogg
+1.31 MB | songs/ruckus/Inst.ogg
+1.27 MB | songs/sporting/Inst.ogg
+1.23 MB | songs/purgatory/Inst.ogg
+
+IMAGES OVER 2048px:
+2560x2800 | 3.22 MB | images/volcano/volcano.png
+4096x4096 | 2.55 MB | images/characters/matt_hurt2.png
+4096x4096 | 2.27 MB | images/matt_hurt2.png
+3634x3499 | 1.08 MB | images/characters/sus-dead.png
+3970x3301 | 0.93 MB | images/characters/matt_sword.png
+2496x1635 | 0.92 MB | images/arena-characters.png
+2266x2281 | 0.77 MB | images/characters/maths.png
+2418x1753 | 0.72 MB | images/characters/kendo.png
+2961x2598 | 0.70 MB | images/characters/sus.png
+3499x3415 | 0.59 MB | images/characters/GF4.png
+3499x3404 | 0.57 MB | images/characters/GF1.png
+2945x2172 | 0.57 MB | images/characters/matt_sword_tired.png
+3502x3402 | 0.50 MB | images/characters/GF2.png
+3437x3443 | 0.50 MB | images/characters/GF_MII_assets.png
+2919x3588 | 0.40 MB | images/boxwall.png
+3975x3235 | 0.38 MB | images/characters/giif.png
+1977x2442 | 0.37 MB | images/characters/bf-kendo.png
+3502x3442 | 0.37 MB | images/characters/GF3.png
+2993x2680 | 0.35 MB | images/characters/fishy.png
+2175x2082 | 0.34 MB | images/arena-new/crowdRight.png
+2904x2088 | 0.30 MB | images/arena-new/crowdLeft.png
+2489x2343 | 0.27 MB | images/characters/mattangry.png
+2560x1400 | 0.24 MB | images/arena-bg.png
+2560x1400 | 0.20 MB | images/swordfight.png
+2615x3284 | 0.20 MB | images/boxfloor.png
+2560x1400 | 0.16 MB | images/boxingnight2.png
+2182x1293 | 0.13 MB | images/backtroll.png
+2795x1380 | 0.10 MB | images/skyBACKGROUND.png
+2560x285 | 0.07 MB | images/railing.png
+2560x1400 | 0.07 MB | images/boxingnight3.png
+2182x1293 | 0.06 MB | images/floortroll.png
+2384x1289 | 0.05 MB | images/lootlake.png
+2490x1410 | 0.05 MB | images/buildingBACKGROUND.png
+2182x1293 | 0.04 MB | images/backwhite.png
+2560x1400 | 0.01 MB | images/boxingnight1.png
+2182x1293 | 0.01 MB | images/floorblack.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.
+
+========== YOURSELF ==========
+Files: 89
+Total size: 129.22 MB
+Images: 34.10 MB
+Audio: 76.48 MB
+Video: 10.59 MB
+File types: {'.png': 30, '.lua': 14, '.json': 13, '.txt': 13, '.ogg': 6, '.xml': 6, '.hx': 2, '.frag': 2, '.mp4': 2, '.ttf': 1}
+
+LARGEST 10 FILES:
+20.24 MB | songs/silly-billy/Inst.ogg
+20.03 MB | songs/silly-billy/Voices.ogg
+12.11 MB | songs/Shattered-Reflection/Inst.ogg
+11.98 MB | songs/Shattered-Reflection/Voices-Opponent.ogg
+11.97 MB | songs/Shattered-Reflection/Voices-Player.ogg
+7.82 MB | videos/silly billy.mp4
+7.00 MB | images/lyric/Animation.json
+4.78 MB | images/bg/broken_mirror.png
+4.35 MB | images/bg/Silly_clouds.png
+4.25 MB | images/characters/Lookalike_Assets.png
+
+IMAGES OVER 2048px:
+3216x2064 | 4.78 MB | images/bg/broken_mirror.png
+3216x2064 | 4.35 MB | images/bg/Silly_clouds.png
+5144x4902 | 4.25 MB | images/characters/Lookalike_Assets.png
+8160x3750 | 3.77 MB | images/characters/Yourself_BF_Assets.png
+8192x2452 | 3.57 MB | images/lyric/spritemap1.png
+3216x4672 | 3.53 MB | images/bg/bgAssets.png
+3216x2064 | 2.33 MB | images/bg/silly_mirror.png
+3688x3570 | 1.90 MB | images/characters/unshrink.png
+3215x1075 | 1.88 MB | images/bg/Silly_floor.png
+2876x3096 | 1.24 MB | images/characters/Lookalike_Alt.png
+3125x2064 | 1.10 MB | images/bg/Silly_idk_1.png
+2585x1511 | 0.82 MB | images/bg/Silly_idk_2.png
+
+UNREADABLE IMAGES:
+None
+
+NOTE: Analysis only. No files were modified.
+Large dimensions do not automatically mean an image is safe to resize.

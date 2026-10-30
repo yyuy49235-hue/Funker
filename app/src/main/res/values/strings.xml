@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Funker Lite Lab</string>
+    <string name="mod_hint">مسار فولدر المود</string>
+    <string name="out_hint">مسار فولدر الناتج (جديد، لازم مايكونش موجود)</string>
+    <string name="btn_scan">فحص المود</string>
+    <string name="btn_atlas">فحص ملفات XML</string>
+    <string name="btn_dry">تجربة التحسين (بدون تغيير)</string>
+    <string name="btn_apply">تحسين في نسخة جديدة</string>
+    <string name="btn_cancel">إلغاء</string>
+    <string name="btn_grant">إعطاء إذن الوصول للملفات</string>
+    <string name="perm_needed">التطبيق محتاج إذن "الوصول لكل الملفات" عشان يقرأ فولدر المودات. اضغط الزر فوق وفعّله، وارجع للتطبيق.</string>
+    <string name="working">جاري العمل... (مفيش نسبة مئوية لأن المحرك مابيبلّغش عن التقدم)</string>
+    <string name="idle_hint">اكتب مسار المود واختار عملية. العمليات ماعدا التحسين بتقرأ بس.</string>
+    <string name="confirm_title">تأكيد</string>
+    <string name="confirm_msg">هيتم إنشاء نسخة جديدة من المود في المسار اللي كتبته. المود الأصلي مش هيتغير. نكمل؟</string>
+    <string name="yes">نكمل</string>
+    <string name="no">لأ</string>
+    <string name="need_output">اكتب مسار فولدر الناتج الأول.</string>
+    <string name="error_prefix">خطأ</string>
+    <string name="mode_title">وضع التحسين</string>
+    <string name="mode_lossless">بدون فقد (آمن، يغيّر الترميز فقط)</string>
+    <string name="mode_balanced">متوازن (تصغير أبعاد حتى النص)</string>
+    <string name="mode_aggressive">قوي (تصغير حتى الربع، فرق واضح محتمل)</string>
+    <string name="allow_resize">السماح بتصغير أبعاد الصور</string>
+    <string name="resize_warning">تحذير: التصغير بيغيّر أبعاد الصور وبيعدّل ملف XML والـ scale في JSON الشخصية. بيتم فقط لأطلس الشخصيات اللي التطبيق يقدر يعدّل لها الـ scale بشكل مثبت. غير كده بيتخطّاها. لازم تجرّب في اللعبة لأن ده ماتجرّبش.</string>
+    <string name="scale_label">نسبة التصغير المطلوبة: %1$d%%</string>
+    <string name="target_hint">الهدف: نسبة تقليل الحجم بالمية (هدف مش ضمان)</string>
+    <string name="detailed">تقرير مفصّل لكل ملف</string>
+    <string name="progress_fmt">%1$s: %2$d من %3$d\n%4$s\nتوفير لحد دلوقتي: %5$s</string>
+</resources>

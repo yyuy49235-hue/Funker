@@ -1,0 +1,6 @@
+{
+  "max_dimension": 2048,
+  "png_optimize": true,
+  "preserve_original": true,
+  "output_folder": "Agoti_Lite_Output"
+}

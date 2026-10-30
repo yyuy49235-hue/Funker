@@ -1,0 +1,30 @@
+Funker Lite Lab - XML and Image Check
+XML files: 23
+Readable XML files: 23
+Missing referenced images: 4
+Invalid frame bounds: 2
+Check results below:
+
+CHECK FRAMES | images/Ratings.xml | image=Ratings.png | size=832x1756 | frames=8 | invalid=2
+OK | images/agoti/images/Agoti_Cutscene_A.xml | image=Agoti_Cutscene_A.png | size=8192x8192 | frames=104 | invalid=0
+OK | images/agoti/images/Agoti_Cutscene_B.xml | image=Agoti_Cutscene_B.png | size=8192x8192 | frames=125 | invalid=0
+OK | images/agoti/images/Agoti_Micless.xml | image=Agoti_Micless.png | size=2048x2048 | frames=14 | invalid=0
+OK | images/agoti/images/BF_Dialogue.xml | image=BF_Dialogue.png | size=2048x1024 | frames=14 | invalid=0
+OK | images/agoti/images/Dialogue_Box.xml | image=Dialogue_Box.png | size=4096x4096 | frames=40 | invalid=0
+OK | images/agoti/images/LoudSpeaker_Moving.xml | image=LoudSpeaker_Moving.png | size=8192x8192 | frames=15 | invalid=0
+OK | images/agoti/images/Pillar_1.xml | image=Pillar_1.png | size=2048x2048 | frames=4 | invalid=0
+MISSING IMAGE | images/agoti/images/Pillar_BG.xml | Pillar BG.png
+OK | images/agoti/images/Pillar_BG_Stage.xml | image=Pillar_BG_Stage.png | size=8192x8192 | frames=9 | invalid=0
+OK | images/agoti/images/Pillar_FG.xml | image=Pillar_FG.png | size=8192x8192 | frames=76 | invalid=0
+OK | images/agoti/images/The_void.xml | image=The_void.png | size=8192x8192 | frames=76 | invalid=0
+MISSING IMAGE | images/agoti/images/slidePortraits/Dialogue_Box_2.xml | Dialogue Box_2.png
+MISSING IMAGE | images/agoti/images/slidePortraits/Dialogue_Names.xml | Dialogue Names.png
+OK | images/characters/AGOTI.xml | image=AGOTI.png | size=8192x4096 | frames=74 | invalid=0
+MISSING IMAGE | images/characters/Alt_Agoti_Sprites_B.xml | Alt Agoti Sprites_B.png
+OK | images/characters/BOYFRIEND.xml | image=BOYFRIEND.png | size=8192x4096 | frames=452 | invalid=0
+OK | images/characters/DADDY_DEAREST.xml | image=DADDY_DEAREST.png | size=4096x2048 | frames=45 | invalid=0
+OK | images/characters/GF_assets.xml | image=GF_assets.png | size=8192x8192 | frames=252 | invalid=0
+OK | images/characters/GF_rock.xml | image=GF_rock.png | size=8192x8192 | frames=230 | invalid=0
+OK | images/characters/bfCar.xml | image=bfCar.png | size=4096x4096 | frames=327 | invalid=0
+OK | images/dialogue/Agoti_Dialogue.xml | image=Agoti_Dialogue.png | size=4096x2048 | frames=32 | invalid=0
+OK | images/menucharacters/agotiMenu.xml | image=agotiMenu.png | size=2484x931 | frames=15 | invalid=0

@@ -1,0 +1,22 @@
+OK | images/agoti/images/Agoti_Cutscene_A.xml | 104 frames | bounds valid
+OK | images/agoti/images/Agoti_Cutscene_B.xml | 125 frames | bounds valid
+OK | images/agoti/images/Dialogue_Box.xml | 40 frames | bounds valid
+OK | images/agoti/images/LoudSpeaker_Moving.xml | 15 frames | bounds valid
+OK | images/agoti/images/Pillar_BG.xml | 67 frames | bounds valid
+OK | images/agoti/images/Pillar_BG_Stage.xml | 9 frames | bounds valid
+OK | images/agoti/images/Pillar_FG.xml | 76 frames | bounds valid
+OK | images/agoti/images/The_void.xml | 76 frames | bounds valid
+OK | images/agoti/images/slidePortraits/Dialogue_Box_2.xml | 40 frames | bounds valid
+OK | images/characters/AGOTI.xml | 74 frames | bounds valid
+OK | images/characters/Alt_Agoti_Sprites_B.xml | 75 frames | bounds valid
+OK | images/characters/BOYFRIEND.xml | 452 frames | bounds valid
+OK | images/characters/DADDY_DEAREST.xml | 45 frames | bounds valid
+OK | images/characters/GF_assets.xml | 252 frames | bounds valid
+OK | images/characters/GF_rock.xml | 230 frames | bounds valid
+OK | images/characters/bfCar.xml | 327 frames | bounds valid
+OK | images/dialogue/Agoti_Dialogue.xml | 32 frames | bounds valid
+OK | images/menucharacters/agotiMenu.xml | 15 frames | bounds valid
+
+XML files targeted: 18
+Errors: 0
+WARNING: This is an intermediate build; not yet tested in-game.

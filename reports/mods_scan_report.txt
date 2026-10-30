@@ -1,0 +1,126 @@
+Funker Lite Lab - Installed Mods Inspector
+Mods directory: /storage/emulated/0/.PsychEngine/mods
+Mod folders: 15
+
+========== Agoti ==========
+Mod root: Agoti/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 163 | Size: 70.80 MB
+File types: {'png': 43, 'ogg': 36, 'json': 33, 'xml': 23, 'txt': 20, 'lua': 8}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Flipped Out 1.0.5 ==========
+Mod root: Flipped Out 1.0.5/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'songs', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 388 | Size: 220.73 MB
+File types: {'png': 108, 'json': 95, 'lua': 94, 'ogg': 44, 'xml': 35, 'txt': 10, 'ttf': 1, 'mp4': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Garcello Psych Engine ==========
+Mod root: Garcello Psych Engine/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'images', 'music', 'shaders', 'songs', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 121 | Size: 48.47 MB
+File types: {'json': 31, 'png': 24, 'txt': 20, '(none)': 14, 'lua': 9, 'xml': 9, 'ogg': 8, 'sfk': 4, 'mp4': 1, 'asd': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Girl's Night ==========
+Mod root: Girl's Night/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 162 | Size: 50.47 MB
+File types: {'txt': 73, 'lua': 54, 'png': 12, 'json': 10, 'ogg': 8, 'xml': 3, 'mp3': 2}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Happy2K23 - Krimson K. (Playable) ==========
+Mod root: Happy2K23 - Krimson K. (Playable)/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 91 | Size: 42.87 MB
+File types: {'png': 32, 'txt': 20, 'xml': 17, 'json': 15, 'lua': 5, 'ogg': 2}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Last Determined zPort ==========
+Mod root: Last Determined zPort/
+Psych folders found: ['characters', 'custom_events', 'data', 'fonts', 'images', 'songs', 'sounds', 'stages', 'weeks']
+pack.json present: True
+Files: 118 | Size: 18.60 MB
+File types: {'png': 43, 'json': 28, 'lua': 15, 'xml': 14, 'ogg': 12, 'txt': 4, 'ttf': 2}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Nocturnal Protocol (Fan Recreation) ==========
+Mod root: Nocturnal Protocol (Fan Recreation)/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'images', 'music', 'scripts', 'shaders', 'songs', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 126 | Size: 78.27 MB
+File types: {'png': 42, 'txt': 33, 'json': 22, 'xml': 14, 'lua': 11, 'ogg': 3, 'lang': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== qt-rewired-psych-modpack ==========
+Mod root: qt-rewired-psych-modpack/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 315 | Size: 280.95 MB
+File types: {'png': 109, 'ogg': 77, 'json': 74, 'xml': 26, 'hx': 18, 'txt': 6, 'mp4': 3, 'frag': 2}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== sky port ==========
+Mod root: sky port/
+Psych folders found: ['characters', 'custom_events', 'data', 'images', 'music', 'scripts', 'songs', 'sounds', 'stages', 'weeks']
+pack.json present: True
+Files: 91 | Size: 28.91 MB
+File types: {'json': 25, 'png': 22, 'ogg': 15, 'xml': 14, 'lua': 12, 'txt': 2, 'fla': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== tricky ==========
+Mod root: tricky/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 125 | Size: 86.78 MB
+File types: {'json': 29, 'txt': 28, 'png': 26, 'ogg': 13, 'lua': 11, 'xml': 11, 'mp4': 6, 'lang': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== Vs zRamirez Lua Port ==========
+Mod root: Vs zRamirez Lua Port/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 398 | Size: 433.00 MB
+File types: {'png': 133, 'json': 68, 'lua': 59, 'txt': 43, 'xml': 41, 'ogg': 23, 'html': 10, 'mp4': 10, 'mp3': 8, 'lang': 1, 'ttf': 1, 'frag': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== VS-Tabi-Revival-main ==========
+Mod root: VS-Tabi-Revival-main/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'fonts', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 247 | Size: 144.00 MB
+File types: {'ogg': 104, 'png': 68, 'txt': 21, 'json': 19, 'lua': 14, 'xml': 9, 'frag': 5, 'otf': 2, 'mp4': 2, '(none)': 1, 'ttf': 1, 'hx': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== vswhiitypsych ==========
+Mod root: vswhiitypsych/
+Psych folders found: []
+pack.json present: False
+Files: 1072 | Size: 379.21 MB
+File types: {'dll': 366, 'png': 291, 'ogg': 137, 'json': 116, 'xml': 101, 'txt': 50, 'jar': 2, 'lua': 2, 'ico': 1, 'ndll': 1, 'exe': 1, 'zip': 1, 'offset': 1, 'otf': 1, 'ttf': 1}
+VERDICT: NOT recognized as a Psych Engine mod
+
+========== Wii Funkin Fanmade Psych Engine Port Optimizado ==========
+Mod root: Wii Funkin Fanmade Psych Engine Port Optimizado/
+Psych folders found: ['characters', 'custom_events', 'custom_notetypes', 'data', 'images', 'music', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'weeks']
+pack.json present: True
+Files: 299 | Size: 61.97 MB
+File types: {'json': 119, 'png': 86, 'xml': 36, 'ogg': 33, 'lua': 21, 'txt': 3, 'frag': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== YOURSELF ==========
+Mod root: YOURSELF/
+Psych folders found: ['characters', 'custom_events', 'data', 'fonts', 'images', 'scripts', 'shaders', 'songs', 'sounds', 'stages', 'videos', 'weeks']
+pack.json present: True
+Files: 89 | Size: 129.22 MB
+File types: {'png': 30, 'lua': 14, 'json': 13, 'txt': 13, 'ogg': 6, 'xml': 6, 'hx': 2, 'frag': 2, 'mp4': 2, 'ttf': 1}
+VERDICT: looks like a Psych Engine mod (heuristic, not a guarantee)
+
+========== ZIP: modTemplate.zip ==========
+Use inspect_zip.py to inspect this archive.

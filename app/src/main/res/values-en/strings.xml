@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Funker Lite Lab</string>
+    <string name="mod_hint">Mod folder path</string>
+    <string name="out_hint">Output folder path (new, must not exist)</string>
+    <string name="btn_scan">Scan mod</string>
+    <string name="btn_atlas">Check XML atlases</string>
+    <string name="btn_dry">Dry run (no changes)</string>
+    <string name="btn_apply">Optimize into a new copy</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_grant">Grant file access</string>
+    <string name="perm_needed">This app needs the "All files access" permission to read the mods folder. Tap the button above, enable it, then come back.</string>
+    <string name="working">Working... (no percentage: the engine does not report progress)</string>
+    <string name="idle_hint">Enter the mod path and pick an action. Everything except optimizing is read-only.</string>
+    <string name="confirm_title">Confirm</string>
+    <string name="confirm_msg">A new copy of the mod will be created at the output path. The original is not changed. Continue?</string>
+    <string name="yes">Continue</string>
+    <string name="no">No</string>
+    <string name="need_output">Enter the output folder path first.</string>
+    <string name="error_prefix">Error</string>
+    <string name="mode_title">Optimization mode</string>
+    <string name="mode_lossless">Lossless (safe, changes encoding only)</string>
+    <string name="mode_balanced">Balanced (resize down to half size)</string>
+    <string name="mode_aggressive">Aggressive (resize down to a quarter, visible difference possible)</string>
+    <string name="allow_resize">Allow resizing image dimensions</string>
+    <string name="resize_warning">Warning: resizing changes image dimensions and edits the atlas XML and the character JSON scale. It is done only for character atlases whose scale the app can fix provably; everything else is skipped. Test in game: this has not been tested.</string>
+    <string name="scale_label">Requested scale: %1$d%%</string>
+    <string name="target_hint">Target size reduction in percent (a goal, not a promise)</string>
+    <string name="detailed">Detailed per-file report</string>
+    <string name="progress_fmt">%1$s: %2$d of %3$d\n%4$s\nSaved so far: %5$s</string>
+</resources>

@@ -1,0 +1,23 @@
+UNCHANGED | images/Ratings.xml | image=Ratings.png | 832x1756->832x1756 | frames=8 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Agoti_Cutscene_A.xml | image=Agoti_Cutscene_A.png | 8192x8192->2048x2048 | frames=104 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Agoti_Cutscene_B.xml | image=Agoti_Cutscene_B.png | 8192x8192->2048x2048 | frames=125 | names_match=True | source_frames_outside_original=0
+UNCHANGED | images/agoti/images/Agoti_Micless.xml | image=Agoti_Micless.png | 2048x2048->2048x2048 | frames=14 | names_match=True | source_frames_outside_original=0
+UNCHANGED | images/agoti/images/BF_Dialogue.xml | image=BF_Dialogue.png | 2048x1024->2048x1024 | frames=14 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Dialogue_Box.xml | image=Dialogue_Box.png | 4096x4096->2048x2048 | frames=40 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/LoudSpeaker_Moving.xml | image=LoudSpeaker_Moving.png | 8192x8192->2048x2048 | frames=15 | names_match=True | source_frames_outside_original=0
+UNCHANGED | images/agoti/images/Pillar_1.xml | image=Pillar_1.png | 2048x2048->2048x2048 | frames=4 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Pillar_BG.xml | image=Pillar BG.png | 8192x8192->2048x2048 | frames=67 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Pillar_BG_Stage.xml | image=Pillar_BG_Stage.png | 8192x8192->2048x2048 | frames=9 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/Pillar_FG.xml | image=Pillar_FG.png | 8192x8192->2048x2048 | frames=76 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/The_void.xml | image=The_void.png | 8192x8192->2048x2048 | frames=76 | names_match=True | source_frames_outside_original=0
+RESIZED | images/agoti/images/slidePortraits/Dialogue_Box_2.xml | image=Dialogue Box_2.png | 4096x2048->2048x1024 | frames=40 | names_match=True | source_frames_outside_original=0
+UNCHANGED | images/agoti/images/slidePortraits/Dialogue_Names.xml | image=Dialogue Names.png | 2048x1024->2048x1024 | frames=160 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/AGOTI.xml | image=AGOTI.png | 8192x4096->2048x1024 | frames=74 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/Alt_Agoti_Sprites_B.xml | image=Alt Agoti Sprites_B.png | 8192x8192->2048x2048 | frames=75 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/BOYFRIEND.xml | image=BOYFRIEND.png | 8192x4096->2048x1024 | frames=452 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/DADDY_DEAREST.xml | image=DADDY_DEAREST.png | 4096x2048->2048x1024 | frames=45 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/GF_assets.xml | image=GF_assets.png | 8192x8192->2048x2048 | frames=252 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/GF_rock.xml | image=GF_rock.png | 8192x8192->2048x2048 | frames=230 | names_match=True | source_frames_outside_original=0
+RESIZED | images/characters/bfCar.xml | image=bfCar.png | 4096x4096->2048x2048 | frames=327 | names_match=True | source_frames_outside_original=0
+RESIZED | images/dialogue/Agoti_Dialogue.xml | image=Agoti_Dialogue.png | 4096x2048->2048x1024 | frames=32 | names_match=True | source_frames_outside_original=0
+RESIZED | images/menucharacters/agotiMenu.xml | image=agotiMenu.png | 2484x931->2048x768 | frames=15 | names_match=True | source_frames_outside_original=0

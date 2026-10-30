@@ -1,0 +1,51 @@
+Funker Lite Lab - Image Scan
+Mod folder: /data/data/com.termux/files/home/storage/shared/Agoti
+Images scanned: 43
+Total image size: 63.33 MB
+Images with a dimension above 2048 px: 21
+
+Path | Dimensions | Mode | Size | Format
+-----------------------------------------------------------------
+images/Ratings.png | 832x1756 | RGBA | 558.2 KB | PNG
+images/agoti/images/Agoti_Cutscene_A.png | 8192x8192 | RGBA | 3337.1 KB | PNG
+images/agoti/images/Agoti_Cutscene_B.png | 8192x8192 | RGBA | 3588.3 KB | PNG
+images/agoti/images/Agoti_Micless.png | 2048x2048 | RGBA | 407.1 KB | PNG
+images/agoti/images/BF_Dialogue.png | 2048x1024 | RGBA | 240.1 KB | PNG
+images/agoti/images/Dialogue_Box.png | 4096x4096 | RGBA | 185.1 KB | PNG
+images/agoti/images/LoudSpeaker_Moving.png | 8192x8192 | RGBA | 1620.6 KB | PNG
+images/agoti/images/Pillar_1.png | 2048x2048 | RGBA | 151.5 KB | PNG
+images/agoti/images/Pillar_BG.png | 8192x8192 | RGBA | 1196.8 KB | PNG
+images/agoti/images/Pillar_BG_Stage.png | 8192x8192 | RGBA | 2343.8 KB | PNG
+images/agoti/images/Pillar_FG.png | 8192x8192 | RGBA | 495.0 KB | PNG
+images/agoti/images/The_void.png | 8192x8192 | RGBA | 17416.5 KB | PNG
+images/agoti/images/Void_Back.png | 3240x2100 | RGBA | 285.0 KB | PNG
+images/agoti/images/Void_Front.png | 3240x2100 | RGBA | 301.8 KB | PNG
+images/agoti/images/slidePortraits/Dialogue_Box_2.png | 4096x2048 | RGBA | 52.4 KB | PNG
+images/agoti/images/slidePortraits/Dialogue_Names.png | 2048x1024 | RGBA | 92.4 KB | PNG
+images/agoti/images/slides/A0.png | 1920x1080 | RGBA | 65.8 KB | PNG
+images/agoti/images/slides/A1.png | 1920x1080 | RGB | 825.9 KB | PNG
+images/agoti/images/slides/A2.png | 1920x1080 | RGB | 825.2 KB | PNG
+images/agoti/images/slides/A3.png | 1920x1080 | RGB | 816.6 KB | PNG
+images/agoti/images/slides/A4.png | 1920x1080 | RGB | 886.1 KB | PNG
+images/agoti/images/slides/A5.png | 1920x1080 | RGB | 934.7 KB | PNG
+images/agoti/images/slides/A6.png | 1920x1080 | RGB | 956.3 KB | PNG
+images/agoti/images/slides/A7.png | 1920x1080 | RGB | 749.1 KB | PNG
+images/agoti/images/slides/A8.png | 1920x1080 | RGB | 1074.3 KB | PNG
+images/characters/AGOTI.png | 8192x4096 | RGBA | 2246.6 KB | PNG
+images/characters/Alt_Agoti_Sprites_B.png | 8192x8192 | RGBA | 4221.1 KB | PNG
+images/characters/BOYFRIEND.png | 8192x4096 | RGBA | 4292.8 KB | PNG
+images/characters/DADDY_DEAREST.png | 4096x2048 | RGBA | 1080.4 KB | PNG
+images/characters/GF_assets.png | 8192x8192 | RGBA | 5827.1 KB | PNG
+images/characters/GF_rock.png | 8192x8192 | RGBA | 3478.9 KB | PNG
+images/characters/bfCar.png | 4096x4096 | RGBA | 2553.7 KB | PNG
+images/dialogue/Agoti_Dialogue.png | 4096x2048 | RGBA | 653.0 KB | PNG
+images/icons/agoti.png | 284x148 | RGBA | 23.3 KB | PNG
+images/icons/agoti_angry.png | 300x120 | RGBA | 28.9 KB | PNG
+images/menubackgrounds/menu_void.png | 1280x386 | RGBA | 61.8 KB | PNG
+images/menucharacters/agotiMenu.png | 2484x931 | RGBA | 799.0 KB | PNG
+images/menudifficulties/expert.png | 308x67 | RGBA | 14.6 KB | PNG
+images/menudifficulties/insane.png | 308x67 | RGBA | 19.2 KB | PNG
+images/storymenu/week0.png | 533x114 | RGBA | 25.0 KB | PNG
+images/warn.png | 1280x720 | RGBA | 68.1 KB | PNG
+images/white.png | 3240x2100 | RGBA | 30.5 KB | PNG
+pack.png | 150x150 | RGBA | 15.1 KB | PNG
