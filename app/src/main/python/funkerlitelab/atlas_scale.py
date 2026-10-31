@@ -23,13 +23,46 @@ class ScaleError(Exception):
     pass
 
 
+_DECL = re.compile(rb"^\s*<\?xml[^>]*encoding\s*=\s*[\"']([A-Za-z0-9_.-]+)[\"']", re.I)
+_BOMS = [(b"\xef\xbb\xbf", "utf-8"), (b"\xff\xfe", "utf-16-le"), (b"\xfe\xff", "utf-16-be")]
+
+
+def decode_keep(raw, is_xml):
+    """Decode bytes and remember how to encode them back identically: returns (text, (codec, bom_bytes))."""
+    bom, codec = b"", None
+    for b, c in _BOMS:
+        if raw.startswith(b):
+            bom, codec, raw = b, c, raw[len(b):]
+            break
+    if codec is None:
+        m = _DECL.match(raw[:200]) if is_xml else None
+        codec = m.group(1).decode("ascii").lower() if m else "utf-8"
+    try:
+        return raw.decode(codec), (codec, bom)
+    except (LookupError, UnicodeDecodeError) as e:
+        raise ScaleError(f"cannot decode file as {codec}: {e}")
+
+
+def encode_keep(text, how):
+    codec, bom = how
+    try:
+        return bom + text.encode(codec)
+    except UnicodeEncodeError as e:
+        raise ScaleError(f"cannot encode edited text back to {codec}: {e}")
+
+
+def _parse_xml(text):
+    """Parse without the XML declaration so a declared non-UTF-8 encoding cannot clash with our str."""
+    return ET.fromstring(re.sub(r"^\s*<\?xml[^>]*\?>", "", text, count=1).encode("utf-8"))
+
+
 def _r(v):
     return int(math.floor(v + 0.5))
 
 
 def scale_sparrow_xml(text, fx, fy, new_w, new_h):
     """Return (new_text, frame_count). Raises ScaleError if the result is not provably consistent."""
-    before = [n for n in ET.fromstring(text.encode("utf-8")).iter() if n.tag == "SubTexture"]
+    before = [n for n in _parse_xml(text).iter() if n.tag == "SubTexture"]
     count = 0
 
     def fix_tag(m):
@@ -53,7 +86,7 @@ def scale_sparrow_xml(text, fx, fy, new_w, new_h):
         return _ATTR.sub(lambda a: f"{a.group(1)}{a.group(2)}{a.group(3)}{new[a.group(1)]}{a.group(3)}", tag)
 
     new_text = _TAG.sub(fix_tag, text)
-    after = [n for n in ET.fromstring(new_text.encode("utf-8")).iter() if n.tag == "SubTexture"]
+    after = [n for n in _parse_xml(new_text).iter() if n.tag == "SubTexture"]
     if len(after) != len(before) or [n.get("name") for n in after] != [n.get("name") for n in before]:
         raise ScaleError("frame names/count changed")
     for n in after:

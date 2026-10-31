@@ -19,13 +19,18 @@
     <string name="need_output">اكتب مسار فولدر الناتج الأول.</string>
     <string name="error_prefix">خطأ</string>
     <string name="mode_title">وضع التحسين</string>
-    <string name="mode_lossless">بدون فقد (آمن، يغيّر الترميز فقط)</string>
-    <string name="mode_balanced">متوازن (تصغير أبعاد حتى النص)</string>
-    <string name="mode_aggressive">قوي (تصغير حتى الربع، فرق واضح محتمل)</string>
+    <string name="mode_lossless">آمن (بدون تغيير أبعاد الصور)</string>
+    <string name="mode_balanced">ذكي (تصغير تلقائي معتدل للصور المناسبة)</string>
+    <string name="mode_aggressive">أقصى (تصغير تلقائي أقوى، فرق محتمل في الجودة)</string>
     <string name="allow_resize">السماح بتصغير أبعاد الصور</string>
-    <string name="resize_warning">تحذير: التصغير بيغيّر أبعاد الصور وبيعدّل ملف XML والـ scale في JSON الشخصية. بيتم فقط لأطلس الشخصيات اللي التطبيق يقدر يعدّل لها الـ scale بشكل مثبت. غير كده بيتخطّاها. لازم تجرّب في اللعبة لأن ده ماتجرّبش.</string>
+    <string name="resize_warning">الأداة بتختار نسبة التصغير لكل صورة لوحدها بعد قياس فقد التفاصيل، وبتصغّر بس أطلس الشخصيات اللي تقدر تظبط لها الـ scale بشكل مثبت. الباقي بيتخطّاه. لازم تجرّب النتيجة في اللعبة لأن ده ماتجرّبش.</string>
     <string name="scale_label">نسبة التصغير المطلوبة: %1$d%%</string>
     <string name="target_hint">الهدف: نسبة تقليل الحجم بالمية (هدف مش ضمان)</string>
     <string name="detailed">تقرير مفصّل لكل ملف</string>
     <string name="progress_fmt">%1$s: %2$d من %3$d\n%4$s\nتوفير لحد دلوقتي: %5$s</string>
+    <string name="btn_inspect">فحص بنية المود (ذكاء المود)</string>
+    <string name="btn_validate">التحقق من النسخة المحسنة (مقارنة بالأصل)</string>
+    <string name="btn_report">تصدير تقرير التشخيص</string>
+    <string name="need_output_validate">اكتب مسار النسخة المحسنة في خانة الناتج عشان نقارنها بالأصل.</string>
+    <string name="confirm_msg_resize">هيتم إنشاء نسخة جديدة من المود، وبعض الصور هتتصغّر أبعادها تلقائيًا ويتعدّل ملف XML والـ scale للشخصيات المرتبطة بيها. المود الأصلي مش هيتغير. نكمل؟</string>
 </resources>

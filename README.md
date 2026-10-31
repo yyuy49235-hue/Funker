@@ -1,4 +1,4 @@
-# FunkerLiteLab v0.4 (engine + CLI + Android app source)
+# FunkerLiteLab v0.5 (engine + CLI + Android app source)
 
 Engine: Python 3.10+ and Pillow, in `app/src/main/python/`. Android app: `app/` (Kotlin UI + Chaquopy runs the same engine).
 See OPTIMIZATION.md for what the optimizer does. APK: NOT built yet, see BUILD_ON_GITHUB.md. The Kotlin UI has not been compiled or run.
@@ -7,10 +7,12 @@ See OPTIMIZATION.md for what the optimizer does. APK: NOT built yet, see BUILD_O
     python3 flab.py mods  "/storage/emulated/0/.PsychEngine/mods" --report ~/flab/mods.json
     python3 flab.py scan  "<mod folder>" --report ~/flab/scan.json
     python3 flab.py atlas "<mod folder>" --report ~/flab/atlas.json
+    python3 flab.py inspect "<mod folder>"
+    python3 flab.py validate "<original mod>" "<optimized copy>"
     python3 flab.py zipcheck "<mod>.zip"
     python3 flab.py optimize "<mod folder>"                         # dry-run (default)
     python3 flab.py optimize "<mod folder>" --output "<NEW folder>" --apply
-    # resizing (off by default): add  --mode balanced|aggressive --allow-resize --scale 0.5 --target 45
+    # resizing (off by default): add  --mode balanced|aggressive --allow-resize --target 45   (scale is automatic; --scale 0.5 forces a fixed value)
     python3 run_tests.py
 
 Reports go outside the mod (the tool refuses to write inside it). Manifests go to `workspace` in config.json.
@@ -27,3 +29,5 @@ Reports go outside the mod (the tool refuses to write inside it). Manifests go t
 - Atlas check = rectangles fit the image. Not a compatibility guarantee. JSON/Lua dependency analysis: not done yet.
 - Tested on synthetic files plus one real 2048px atlas from your test_run. Not tested on your phone, not in game.
 - Peak RAM seen for one synthetic 8192x8192 RGBA image: ~574 MB (in my sandbox). Close other apps on phones with little RAM.
+
+See CAPABILITIES.md (what is missing) and TABI_INVESTIGATION.md (the v4 error).

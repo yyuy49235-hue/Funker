@@ -4,6 +4,9 @@ import sys
 from pathlib import Path
 
 from .atlas import check_atlases
+from .depgraph import build_graph
+from .inspect_mod import inspect_mod
+from .validate import validate_output
 from .operation import MODES, Settings, optimize_mod
 from .paths import PathError
 from .scanner import scan, summarize
@@ -50,15 +53,19 @@ def main(argv=None):
         s = sub.add_parser(name, help=helptext)
         s.add_argument("mod"); s.add_argument("--report")
     m = sub.add_parser("mods", help="list every mod in a mods folder"); m.add_argument("mods_dir"); m.add_argument("--report")
+    i = sub.add_parser("inspect", help="structure, engine hints and reference graph of one mod"); i.add_argument("mod"); i.add_argument("--report"); i.add_argument("--edges", action="store_true", help="include every graph edge")
+    v = sub.add_parser("validate", help="static validation of an optimized copy against its source (never runs the game)")
+    v.add_argument("source"); v.add_argument("output"); v.add_argument("--report")
     z = sub.add_parser("zipcheck", help="inspect a mod ZIP without extracting"); z.add_argument("zipfile")
     o = sub.add_parser("optimize", help="lossless PNG optimization (dry-run unless --apply)")
     o.add_argument("mod"); o.add_argument("--output"); o.add_argument("--apply", action="store_true")
     o.add_argument("--workspace")
     o.add_argument("--mode", choices=MODES, default="lossless")
     o.add_argument("--allow-resize", action="store_true", help="REQUIRED for any resizing (balanced/aggressive only)")
-    o.add_argument("--scale", type=float, default=0.5, help="requested scale, e.g. 0.5 = half size")
+    o.add_argument("--scale", default="auto", help='"auto" (default, chosen per image) or a fixed fraction such as 0.5')
     o.add_argument("--target", type=float, default=45.0, help="target reduction in percent (a goal, not a promise)")
     o.add_argument("--keep-metadata", action="store_true")
+    o.add_argument("--exclude", action="append", default=[], help="relative path to leave untouched (repeatable)")
     a = ap.parse_args(argv)
     cfg = load_config(a.config)
     try:
@@ -67,6 +74,13 @@ def main(argv=None):
         elif a.cmd == "atlas":
             res = check_atlases(a.mod)
             data = {"atlases": res, "status_counts": {k: sum(r["status"] == k for r in res) for k in sorted({r["status"] for r in res})}}
+        elif a.cmd == "inspect":
+            g = build_graph(a.mod)
+            if not a.edges:
+                g = {**g, "edges": [e for e in g["edges"] if e["confidence"] in ("unresolved",)]}
+            data = {"inspect": inspect_mod(a.mod), "graph": g}
+        elif a.cmd == "validate":
+            data = validate_output(a.source, a.output)
         elif a.cmd == "mods":
             data = list_mods(a.mods_dir)
         elif a.cmd == "zipcheck":
@@ -74,13 +88,13 @@ def main(argv=None):
         else:
             if a.apply and not a.output:
                 sys.exit("--apply needs --output (a NEW folder; existing folders are never touched)")
-            st = Settings(mode=a.mode, allow_resize=a.allow_resize, scale=a.scale, target_pct=a.target,
-                          max_pixels=cfg["max_pixels"], strip_metadata=not a.keep_metadata)
+            st = Settings(mode=a.mode, allow_resize=a.allow_resize, scale=(a.scale if a.scale == "auto" else float(a.scale)), target_pct=a.target,
+                          max_pixels=cfg["max_pixels"], strip_metadata=not a.keep_metadata, exclude=a.exclude)
             m = optimize_mod(a.mod, Path(a.workspace or cfg["workspace"]).expanduser(), a.output, a.apply, settings=st)
             data = {k: m.get(k) for k in ("mode", "status", "summary", "errors", "operation_id", "settings")}
         print(json.dumps(data, indent=2, ensure_ascii=False))
         if getattr(a, "report", None):
-            write_report(a.report, a.mod if hasattr(a, "mod") else a.mods_dir, data)
+            write_report(a.report, getattr(a, "mod", None) or getattr(a, "source", None) or a.mods_dir, data)
     except PathError as e:
         sys.exit(str(e))
     except (FileNotFoundError, NotADirectoryError) as e:

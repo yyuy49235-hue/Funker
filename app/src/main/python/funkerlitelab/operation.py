@@ -11,15 +11,17 @@ import shutil
 import threading
 import time
 import uuid
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from . import __version__
+from .diagnostics import failure_record
 from .hashing import sha256_file
 from .paths import validate_roots
 from .png_optimizer import build_candidate
 from .references import index_references
 from .resize import MODE_LIMITS, build_resized
+from .validate import FAILED as V_FAILED, validate_output
 
 MANIFEST_SCHEMA = 2
 MODES = ("lossless", "balanced", "aggressive")
@@ -29,10 +31,11 @@ MODES = ("lossless", "balanced", "aggressive")
 class Settings:
     mode: str = "lossless"
     allow_resize: bool = False      # resizing happens only if this is True AND mode != lossless
-    scale: float = 0.5
+    scale: object = "auto"          # "auto" = chosen per image from measurements, or a fixed fraction like 0.5
     target_pct: float = 45.0
     max_pixels: int = 70_000_000
     strip_metadata: bool = True
+    exclude: list = field(default_factory=list)   # relative paths left untouched (retry without a problem file)
 
     @property
     def resize_active(self):
@@ -92,6 +95,8 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
 
     save()  # an interrupted run stays detectable: status remains RUNNING
     tmpdir, stage = ws / f"tmp-{op_id}", None
+    ctx = {"stage": "scanning", "file": None}
+    excl = {e.replace("\\", "/") for e in s.exclude}
     _set_progress(phase="scanning", current="", done=0, total=0, saved_bytes=0)
     try:
         files = list(_walk_files(src))
@@ -108,7 +113,13 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
                 return _finish(m, save, stage, tmpdir)
             rel = p.relative_to(src).as_posix()
             _set_progress(current=rel, done=i)
-            res, data = build_candidate(p, s.max_pixels, s.strip_metadata)
+            ctx.update(stage="lossless", file=rel)
+            if rel in excl:
+                from .png_optimizer import ImageResult
+                res, data = ImageResult(rel_path=rel, status="SKIPPED", reason="excluded by user (left untouched)",
+                                        original_size=p.stat().st_size, final_size=p.stat().st_size), None
+            else:
+                res, data = build_candidate(p, s.max_pixels, s.strip_metadata)
             res.rel_path = rel
             entry = {"res": res, "orig": res.original_size, "lossless": res.original_size,
                      "final": res.original_size, "file": None, "resize": None}
@@ -125,7 +136,7 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
         m["target_pct"] = s.target_pct
         if s.resize_active and reduction_pct(orig_total, lossless_total) < s.target_pct:
             refs = index_references(src)
-            cands = sorted((r for r, e in plan.items() if e["res"].status != "FAILED"),
+            cands = sorted((r for r, e in plan.items() if e["res"].status != "FAILED" and r not in excl),
                            key=lambda r: -plan[r]["lossless"])
             _set_progress(phase="resize", total=len(cands), done=0)
             current_total = lossless_total
@@ -136,13 +147,14 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
                     m["status"] = "CANCELLED"
                     return _finish(m, save, stage, tmpdir)
                 _set_progress(current=rel, done=i)
+                ctx.update(stage="resize", file=rel)
                 info, rp = build_resized(src, rel, s.mode, s.scale, refs, s.strip_metadata, s.max_pixels)
                 if rp is not None and len(rp["png_bytes"]) < plan[rel]["lossless"]:
                     f = tmpdir / f"R{i}.png"
                     f.write_bytes(rp["png_bytes"])
                     current_total -= plan[rel]["lossless"] - len(rp["png_bytes"])
                     plan[rel].update(final=len(rp["png_bytes"]), file=f, resize=info)
-                    xml_edits[rp["xml_rel"]] = rp["xml_text"]
+                    xml_edits[rp["xml_rel"]] = rp["xml_bytes"]
                     json_edits.update(rp["json_edits"])
                     info["bytes_after"] = len(rp["png_bytes"])
                     _set_progress(saved_bytes=orig_total - current_total)
@@ -174,20 +186,28 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
                     m["status"] = "CANCELLED"
                     return _finish(m, save, stage, tmpdir)
                 rel = p.relative_to(src).as_posix()
+                ctx.update(stage="copy", file=rel)
                 src_hash[rel] = sha256_file(p)
                 dest = stage / rel
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(p, dest)
                 _set_progress(current=rel, done=i + 1)
             for rel in changed_plan:
+                ctx.update(stage="write-optimized-file", file=rel)
                 os.replace(plan[rel]["file"], stage / rel)
                 plan[rel]["res"].applied = True
-            for rel, text in {**xml_edits, **json_edits}.items():
-                (stage / rel).write_bytes(text.encode("utf-8"))
+            for rel, data in {**xml_edits, **json_edits}.items():
+                (stage / rel).write_bytes(data)
             touched = set(changed_plan) | set(xml_edits) | set(json_edits)
-            for rel, h in src_hash.items():
-                if rel not in touched and sha256_file(stage / rel) != h:
-                    raise RuntimeError(f"unchanged file differs from source: {rel}")
+            ctx.update(stage="validation", file=None)
+            _set_progress(phase="validating", current="")
+            v = validate_output(src, stage, expected_changes=touched, src_hashes=src_hash)
+            m["validation"] = v
+            if v["static"] == V_FAILED or v["structural"] == V_FAILED:
+                bad = [c for c in v["checks"] if c["state"] == V_FAILED]
+                ctx["file"] = (bad[0]["files"] or [None])[0] if bad else None
+                raise RuntimeError("output failed validation, nothing was committed: " +
+                                   "; ".join(f"{c['name']} ({c['detail']})" for c in bad))
             from PIL import Image  # final check on what is actually on disk
             for rel in changed_plan:
                 with Image.open(stage / rel) as im:
@@ -196,6 +216,7 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
                     if list(im.size) != list(want):
                         raise RuntimeError(f"output dimensions wrong for {rel}")
             disk_final = sum((stage / r).stat().st_size for r in plan)
+            ctx.update(stage="commit", file=None)
             os.rename(stage, out)  # commit
             stage = None
             m["disk_verified_png_final_bytes"] = disk_final
@@ -233,7 +254,11 @@ def optimize_mod(source, workspace, output=None, apply=False, cancel=None, max_p
         return _finish(m, save, stage, tmpdir)
     except Exception as e:
         m["status"] = "FAILED"
-        m["errors"].append(f"{type(e).__name__}: {e}")
+        repl = [(str(stage) if stage else None, "<STAGING>"), (str(out) if out else None, "<OUT>"),
+                (str(src), "<SRC>"), (str(ws), "<WORKSPACE>")]
+        m["failure"] = failure_record(ctx, e, repl)
+        where = ctx["stage"] + (f" / {ctx['file']}" if ctx["file"] else "")
+        m["errors"].append(f"[{where}] {m['failure']['exception']}: {m['failure']['message']}")
         return _finish(m, save, stage, tmpdir)
 
 

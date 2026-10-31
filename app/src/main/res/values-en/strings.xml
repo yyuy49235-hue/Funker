@@ -19,13 +19,18 @@
     <string name="need_output">Enter the output folder path first.</string>
     <string name="error_prefix">Error</string>
     <string name="mode_title">Optimization mode</string>
-    <string name="mode_lossless">Lossless (safe, changes encoding only)</string>
-    <string name="mode_balanced">Balanced (resize down to half size)</string>
-    <string name="mode_aggressive">Aggressive (resize down to a quarter, visible difference possible)</string>
+    <string name="mode_lossless">Safe (no change to image dimensions)</string>
+    <string name="mode_balanced">Smart (automatic moderate resizing of suitable images)</string>
+    <string name="mode_aggressive">Maximum (stronger automatic resizing, quality may differ)</string>
     <string name="allow_resize">Allow resizing image dimensions</string>
-    <string name="resize_warning">Warning: resizing changes image dimensions and edits the atlas XML and the character JSON scale. It is done only for character atlases whose scale the app can fix provably; everything else is skipped. Test in game: this has not been tested.</string>
+    <string name="resize_warning">The app picks the resize factor for each image by itself after measuring detail loss, and only resizes character atlases whose scale it can fix provably. Everything else is skipped. Test the result in game: this has not been tested.</string>
     <string name="scale_label">Requested scale: %1$d%%</string>
     <string name="target_hint">Target size reduction in percent (a goal, not a promise)</string>
     <string name="detailed">Detailed per-file report</string>
     <string name="progress_fmt">%1$s: %2$d of %3$d\n%4$s\nSaved so far: %5$s</string>
+    <string name="btn_inspect">Inspect mod structure</string>
+    <string name="btn_validate">Validate optimized copy (compare with original)</string>
+    <string name="btn_report">Export diagnostic report</string>
+    <string name="need_output_validate">Enter the optimized copy path in the output field to compare it with the original.</string>
+    <string name="confirm_msg_resize">A new copy of the mod will be created. Some images will be resized automatically and the atlas XML and the linked characters' scale will be edited. The original is not changed. Continue?</string>
 </resources>

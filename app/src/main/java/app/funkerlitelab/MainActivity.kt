@@ -41,18 +41,13 @@ class MainActivity : Activity() {
 
     private lateinit var modInput: EditText
     private lateinit var outInput: EditText
-    private lateinit var targetInput: EditText
     private lateinit var permText: TextView
     private lateinit var permButton: Button
     private lateinit var modeGroup: RadioGroup
     private lateinit var rLossless: RadioButton
     private lateinit var rBalanced: RadioButton
     private lateinit var rAggressive: RadioButton
-    private lateinit var allowResize: CheckBox
     private lateinit var resizeWarning: TextView
-    private lateinit var scaleLabel: TextView
-    private lateinit var scaleBar: SeekBar
-    private lateinit var detailedBox: CheckBox
     private lateinit var progress: ProgressBar
     private lateinit var progressText: TextView
     private lateinit var resultView: TextView
@@ -118,39 +113,18 @@ class MainActivity : Activity() {
         rLossless.isChecked = true
         modeGroup.setOnCheckedChangeListener { _, _ -> refreshResizeControls() }
 
-        allowResize = CheckBox(this)
-        allowResize.setText(R.string.allow_resize)
-        allowResize.setOnCheckedChangeListener { _, _ -> refreshResizeControls() }
         resizeWarning = TextView(this)
         resizeWarning.setText(R.string.resize_warning)
-        scaleLabel = TextView(this)
-        scaleBar = SeekBar(this)
-        scaleBar.max = 65 // value = 25 + progress  (25..90 %)
-        scaleBar.progress = 25 // 50 %
-        scaleBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(sb: SeekBar?, p: Int, fromUser: Boolean) {
-                if (rBalanced.isChecked && 25 + p < 50) { // balanced never goes below 50 %
-                    scaleBar.progress = 25
-                    return
-                }
-                scaleLabel.text = getString(R.string.scale_label, 25 + p)
-            }
-            override fun onStartTrackingTouch(sb: SeekBar?) {}
-            override fun onStopTrackingTouch(sb: SeekBar?) {}
-        })
-        targetInput = EditText(this)
-        targetInput.setHint(R.string.target_hint)
-        targetInput.setText("45")
-        targetInput.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
-        detailedBox = CheckBox(this)
-        detailedBox.setText(R.string.detailed)
-        detailedBox.isChecked = true
+        resizeWarning.visibility = View.GONE
 
+        val inspectBtn = makeButton(R.string.btn_inspect) { run("inspect") }
+        val validateBtn = makeButton(R.string.btn_validate) { runValidate() }
+        val reportBtn = makeButton(R.string.btn_report) { run("report") }
         val scan = makeButton(R.string.btn_scan) { run("scan") }
         val atlas = makeButton(R.string.btn_atlas) { run("atlas") }
         val dry = makeButton(R.string.btn_dry) { run("dry") }
         val apply = makeButton(R.string.btn_apply) { confirmApply() }
-        actionButtons.addAll(listOf(scan, atlas, dry, apply))
+        actionButtons.addAll(listOf(inspectBtn, validateBtn, reportBtn, scan, atlas, dry, apply))
         cancelButton = makeButton(R.string.btn_cancel) { cancelRun() }
         cancelButton.isEnabled = false
 
@@ -166,36 +140,27 @@ class MainActivity : Activity() {
         resultView.typeface = Typeface.MONOSPACE
         resultView.setTextIsSelectable(true)
 
-        for (v in listOf<View>(permText, permButton, modInput, outInput, modeTitle, modeGroup, allowResize,
-            resizeWarning, scaleLabel, scaleBar, targetInput, detailedBox, scan, atlas, dry, apply,
+        for (v in listOf<View>(permText, permButton, modInput, outInput, modeTitle, modeGroup,
+            resizeWarning, inspectBtn, scan, atlas, dry, apply, validateBtn, reportBtn,
             cancelButton, progress, progressText, resultView)) root.addView(v)
         val scroll = ScrollView(this)
         scroll.addView(root)
         setContentView(scroll)
     }
 
-    /** Resizing controls are active only when a resizing mode is chosen AND the user ticked the box. */
+    /** Only the warning depends on the mode. The resize factor is chosen automatically per image by the engine. */
     private fun refreshResizeControls() {
-        val resizingMode = !rLossless.isChecked
-        allowResize.isEnabled = resizingMode
-        if (!resizingMode) allowResize.isChecked = false
-        val on = resizingMode && allowResize.isChecked
-        scaleBar.isEnabled = on
-        resizeWarning.visibility = if (on) View.VISIBLE else View.GONE
-        scaleLabel.visibility = if (on) View.VISIBLE else View.GONE
-        scaleBar.visibility = if (on) View.VISIBLE else View.GONE
-        if (rBalanced.isChecked && 25 + scaleBar.progress < 50) scaleBar.progress = 25
-        scaleLabel.text = getString(R.string.scale_label, 25 + scaleBar.progress)
+        resizeWarning.visibility = if (rLossless.isChecked) View.GONE else View.VISIBLE
     }
 
     private fun options(): String {
         val mode = if (rAggressive.isChecked) "aggressive" else if (rBalanced.isChecked) "balanced" else "lossless"
         val o = JSONObject()
         o.put("mode", mode)
-        o.put("allow_resize", allowResize.isChecked && mode != "lossless")
-        o.put("scale", (25 + scaleBar.progress) / 100.0)
-        o.put("target_pct", targetInput.text.toString().toDoubleOrNull() ?: 45.0)
-        o.put("detailed", detailedBox.isChecked)
+        o.put("allow_resize", mode != "lossless") // choosing a resizing level is the explicit consent; apply asks again
+        o.put("scale", "auto")
+        o.put("target_pct", 45.0)
+        o.put("detailed", true)
         return o.toString()
     }
 
@@ -225,7 +190,7 @@ class MainActivity : Activity() {
         }
         AlertDialog.Builder(this)
             .setTitle(R.string.confirm_title)
-            .setMessage(R.string.confirm_msg)
+            .setMessage(if (rLossless.isChecked) R.string.confirm_msg else R.string.confirm_msg_resize)
             .setPositiveButton(R.string.yes) { _, _ -> run("apply") }
             .setNegativeButton(R.string.no, null)
             .show()
@@ -270,6 +235,21 @@ class MainActivity : Activity() {
         }
     }
 
+    private fun runValidate() {
+        if (outInput.text.toString().trim().isEmpty()) {
+            resultView.setText(R.string.need_output_validate)
+            return
+        }
+        run("validate")
+    }
+
+    private fun shareText(text: String) {
+        val send = Intent(Intent.ACTION_SEND)
+        send.type = "text/plain"
+        send.putExtra(Intent.EXTRA_TEXT, text)
+        startActivity(Intent.createChooser(send, null))
+    }
+
     private fun run(cmd: String) {
         if (!hasAllFiles()) {
             resultView.setText(R.string.perm_needed)
@@ -282,16 +262,20 @@ class MainActivity : Activity() {
         val lang = if (Locale.getDefault().language == "ar") "ar" else "en"
         setBusy(true)
         executor.execute {
+            var share: String? = null
             val text = try {
                 val raw = Python.getInstance().getModule("bridge")
                     .callAttr("run", cmd, mod, out, ws, lang, opts).toString()
-                JSONObject(raw).getString("text")
+                val j = JSONObject(raw)
+                if (j.has("share")) share = j.getString("share")
+                j.getString("text")
             } catch (e: Exception) {
                 getString(R.string.error_prefix) + ": " + (e.message ?: e.toString())
             }
             runOnUiThread {
                 resultView.text = text
                 setBusy(false)
+                share?.let { shareText(it) }
             }
         }
     }

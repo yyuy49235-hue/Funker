@@ -1,4 +1,4 @@
-# How the optimizer works (v0.4) and what it does NOT do
+# How the optimizer works (v0.5) and what it does NOT do
 
 ## Why v0.3 saved only ~5%
 v0.3 only re-encoded each PNG with Pillow at the same color type. On already-compressed, anti-aliased art that
@@ -44,3 +44,23 @@ output path; an existing output folder is refused. Cancel/failure removes only f
 4. Check: character size and position in idle/sing animations, no missing sprites, no error overlay, stage looks the same.
 5. Measure FPS/RAM with the same tool both times (e.g. the game's FPS counter + Android's memory info), at least 3 runs each; compare medians.
 6. If a character looks wrong, tell me the file name; the manifest in the workspace lists exactly which files changed.
+
+## v0.5 additions
+- Pre-commit validation: the staged copy is compared with the source (paths preserved, untouched files byte-identical, PNGs decode,
+  atlases fit, resized atlases scaled consistently AND character scale compensated, references still resolve). Any FAILED check aborts
+  the run and nothing is committed. The same check can be run later on any output: `flab.py validate <original> <optimized>`.
+- Reference graph (confirmed / inferred / missing / dynamic) and engine hints with confidence: `flab.py inspect <mod>`.
+- Resizing is refused when a script alters character scale, for non-Sparrow atlases, and for rotated frames.
+- Retry without a problem file: `--exclude <relative path>` (repeatable) leaves that file untouched.
+- Failure reports name the stage and the relative file. Export with the app button or read the manifest.
+- Static validation is not a game test. Engine test and manual gameplay test are always reported as not done.
+
+## v0.5.2 - automatic scale (no manual percentage)
+In the app you now pick only a level: Safe (lossless), Smart (balanced) or Maximum (aggressive). The resize factor is chosen PER IMAGE:
+1. ladder of candidate factors, limited by the level (Smart >= 50%, Maximum >= 25%);
+2. a factor is rejected if it would change the aspect ratio, if atlas frame edges would land on fractional pixels (mean error above 0.30 px / 0.35 px),
+   or if the SAMPLED detail loss is above the level's limit (2.0 / 5.0 on a 0-255 scale);
+3. the smallest factor that passes is used; if none passes the image is left alone and the reason is listed.
+Detail loss is an estimate from a few content-rich 512 px tiles (shrunk, enlarged back, compared with the original); it is not a proof of how the
+image will look in game. The manifest records every factor tried and why it was rejected. Expert override: `--scale 0.5` on the command line.
+Choosing Smart/Maximum is the explicit consent to resize; the app asks again before writing the copy.

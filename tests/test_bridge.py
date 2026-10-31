@@ -46,6 +46,22 @@ class TestBridge(unittest.TestCase):
         self.call("dry"); p = json.loads(bridge.progress())
         self.assertEqual(p["phase"], "done"); self.assertIn("current", p)
 
+    def test_inspect_validate_report(self):
+        r = self.call("inspect", lang="ar"); self.assertTrue(r["ok"]); self.assertIn("غير معروف", r["text"])
+        out = str(self.t / "out")
+        self.assertTrue(self.call("apply", out)["ok"])
+        r = self.call("validate", out, lang="en"); self.assertTrue(r["ok"], r["text"])
+        self.assertIn("NOT an in-game test", r["text"]); self.assertIn("[NOT_TESTED] real engine load test", r["text"])
+        self.assertFalse(self.call("validate", "")["ok"])
+        r = self.call("report", lang="en"); self.assertTrue(r["ok"]); self.assertIn("share", r)
+        self.assertNotIn(str(self.t), r["share"])           # no absolute paths in the shareable report
+        self.assertTrue(list(Path(self.ws).glob("diagnostic-*.txt")))
+
+    def test_apply_text_has_status_ladder_without_overclaiming(self):
+        r = self.call("apply", str(self.t / "out2"))
+        self.assertIn("Real engine test: not done", r["text"]); self.assertIn("Manual Android gameplay test: not done", r["text"])
+        r = self.call("dry"); self.assertIn("dry run only", r["text"])
+
     def test_unknown_and_missing(self):
         self.assertFalse(self.call("nope")["ok"])
         for c in ("scan", "atlas"):

@@ -13,8 +13,16 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from .adapters import detect_atlas
+
 TEXT_EXTS = {".lua", ".json", ".hx", ".txt", ".ini", ".cfg", ".yaml", ".yml", ".xml", ".frag", ".vert"}
 MAX_TEXT = 5 * 1024 * 1024
+
+
+# scripts that resize/scale the stage characters: automatic compensation cannot be proven when these exist
+SCRIPT_SCALE = re.compile(
+    r"""(boyfriend|dad|gf|bf|opponent)\w*\.scale|scaleobject\(\s*['"](boyfriend|dad|gf)|setgraphicsize\(\s*['"](boyfriend|dad|gf)"""
+    r"""|setproperty\(\s*['"](boyfriend|dad|gf)\w*\.scale""", re.I)
 
 
 def image_key(rel_png):
@@ -56,7 +64,8 @@ def index_references(root):
                     char_json.setdefault(d["image"].replace("\\", "/").lower(), []).append(rel)
                     continue
             others.append((rel, text.lower()))
-    return {"char_json": char_json, "texts": others}
+    scale_scripts = [rel for rel, text in others if rel.endswith((".lua", ".hx", ".hscript")) and SCRIPT_SCALE.search(text)]
+    return {"char_json": char_json, "texts": others, "scale_scripts": scale_scripts}
 
 
 def _mentions(text_lower, key):
@@ -66,23 +75,33 @@ def _mentions(text_lower, key):
 def check_compensable(root, rel_png, refs):
     """Return (ok, reasons, info). info = {xml, char_jsons}."""
     root = Path(root)
-    reasons = []
+    reasons, warnings = [], []
     key = image_key(rel_png)
     if key is None:
         return False, ["not inside an images/ folder"], {}
     xml_rel = Path(rel_png).with_suffix(".xml").as_posix()
     xml_path = root / xml_rel
+    adapter, ainfo = detect_atlas(root, rel_png)
+    if adapter is not None and not adapter.can_scale:
+        reasons.append(f"atlas format '{adapter.name}' is recognized but resizing it is not supported")
+    elif ainfo.get("refuse"):
+        reasons.append(f"Sparrow atlas not supported: {ainfo.get('detail')}")
     if not xml_path.is_file():
-        reasons.append("no Sparrow XML next to the image (single images and Packer atlases are not supported)")
+        if adapter is None:
+            reasons.append("no atlas metadata next to the image (plain images are not resized: their scale lives in scripts)")
     else:
         try:
             r = ET.parse(xml_path).getroot()
             if not any(n.tag == "SubTexture" for n in r.iter()):
                 reasons.append("XML has no SubTexture frames")
             elif os.path.basename(r.get("imagePath", "")).lower() != Path(rel_png).name.lower():
-                reasons.append("XML imagePath does not point back to this image")
+                warnings.append(f"XML imagePath '{r.get('imagePath')}' differs from the file name; resizing keeps both unchanged "
+                                "(assumes the engine loads the atlas by file name - not verified against engine source)")
         except ET.ParseError:
             reasons.append("XML does not parse")
+    if refs.get("scale_scripts"):
+        reasons.append("script(s) alter character scale (" + ", ".join(refs["scale_scripts"][:2]) +
+                       "); automatic scale compensation cannot be proven")
     jsons = refs["char_json"].get(key, [])
     if not jsons:
         reasons.append("not used by any character JSON, so the on-screen size cannot be compensated automatically")
@@ -92,4 +111,4 @@ def check_compensable(root, rel_png, refs):
         if _mentions(text, key):
             reasons.append(f"also referenced by {rel}; its scale cannot be fixed automatically")
             break
-    return (not reasons), reasons, {"xml": xml_rel, "char_jsons": jsons}
+    return (not reasons), reasons, {"xml": xml_rel, "char_jsons": jsons, "warnings": warnings}
