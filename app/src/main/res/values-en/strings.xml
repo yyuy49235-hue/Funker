@@ -32,5 +32,5 @@
     <string name="btn_validate">Validate optimized copy (compare with original)</string>
     <string name="btn_report">Export diagnostic report</string>
     <string name="need_output_validate">Enter the optimized copy path in the output field to compare it with the original.</string>
-    <string name="confirm_msg_resize">A new copy of the mod will be created. Some images will be resized automatically and the atlas XML and the linked characters\' scale will be edited. The original is not changed. Continue?</string>
+    <string name="confirm_msg_resize">A new copy of the mod will be created. Some images will be resized automatically and the atlas XML and the scale of linked characters will be edited. The original is not changed. Continue?</string>
 </resources>
