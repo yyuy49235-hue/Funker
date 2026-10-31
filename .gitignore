@@ -1,6 +1,5 @@
 build/
 .gradle/
+*.iml
 local.properties
-*.apk
 __pycache__/
-workspace/

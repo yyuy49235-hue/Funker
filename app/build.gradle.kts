@@ -12,8 +12,8 @@ android {
         applicationId = "app.funkerlitelab"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.5.0"
+        versionCode = 3
+        versionName = "0.5.3"
         ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
     }
     compileOptions {
@@ -26,10 +26,6 @@ android {
 chaquopy {
     defaultConfig {
         version = "3.11"
-        buildPython("python3")
-        pip {
-            install("Pillow")
-            install("numpy")
-        }
+        pip { install("Pillow") }
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- outer frame (image) -->
+    <path android:fillColor="#4FD1C5"
+        android:pathData="M30,30h48a4,4 0 0 1 4,4v40a4,4 0 0 1 -4,4H30a4,4 0 0 1 -4,-4V34a4,4 0 0 1 4,-4z M33,37v34h42V37z" />
+    <!-- mountain inside -->
+    <path android:fillColor="#4FD1C5" android:pathData="M36,68l11,-16l8,10l6,-7l9,13z" />
+    <!-- shrink arrow -->
+    <path android:fillColor="#FFB84D" android:pathData="M58,40h12v12l-4,-4l-6,6l-2,-2l6,-6z" />
+</vector>
