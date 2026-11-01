@@ -21,11 +21,13 @@ from PIL import Image, ImageChops
 Image.MAX_IMAGE_PIXELS = None  # we enforce our own limit below
 
 # max_dim: longest image side allowed after optimization (None = never resize)
+# repack: trim/dedupe/re-pack Sparrow atlases (lossless for rendering, scale unchanged).
+# Only enabled for the two strongest presets; light/balanced behave exactly as before.
 LEVELS = {
-    "light": {"max_dim": None},
-    "balanced": {"max_dim": 2048},
-    "strong": {"max_dim": 1536},
-    "maximum": {"max_dim": 1024},
+    "light": {"max_dim": None, "repack": False},
+    "balanced": {"max_dim": 2048, "repack": False},
+    "strong": {"max_dim": 1536, "repack": True},
+    "maximum": {"max_dim": 1024, "repack": True},
 }
 MAX_PIXELS = 24_000_000
 TEXT_EXT = {".lua", ".json", ".hx", ".hscript", ".txt", ".xml", ".csv"}
@@ -139,7 +141,7 @@ def _lossless(src, dst):
     return True, ""
 
 
-def _plan_resize(rel, size, max_dim, atlas_map, char_map, files, abs_of):
+def _plan_resize(rel, size, max_dim, atlas_map, char_map, files, abs_of, xml_bytes=None):
     """Return (ok, reason, plan). plan holds everything needed to apply the resize."""
     w, h = size
     key = rel.lower()
@@ -167,7 +169,7 @@ def _plan_resize(rel, size, max_dim, atlas_map, char_map, files, abs_of):
     # atlas XML
     xp = abs_of[xmls[0]]
     try:
-        tree = ET.parse(xp)
+        tree = ET.ElementTree(ET.fromstring(xml_bytes)) if xml_bytes is not None else ET.parse(xp)
     except Exception as e:
         return False, "not resized: atlas XML unreadable (%s)" % type(e).__name__, None
     n = 0
@@ -225,6 +227,160 @@ def _resize_save(src, dst, nw, nh):
     return os.path.getsize(dst)
 
 
+def _tag(el):
+    return el.tag.split("}")[-1]
+
+
+def _num(el, key, default=None):
+    v = el.attrib.get(key)
+    if v is None:
+        return default
+    f = float(v)
+    if f != int(f):
+        raise ValueError("non-integer value for " + key)
+    return int(f)
+
+
+def _pack_shelf(items, pad, limit):
+    """items: [(id, w, h)]. Shelf packing, tallest first. Returns (pos, width, height)."""
+    x = y = shelf = maxw = 0
+    pos = {}
+    for i, w, h in sorted(items, key=lambda t: (-t[2], -t[1])):
+        if x > 0 and x + w > limit:
+            y += shelf + pad
+            x = shelf = 0
+        pos[i] = (x, y)
+        x += w + pad
+        shelf = max(shelf, h)
+        maxw = max(maxw, x - pad)
+    return pos, maxw, y + shelf
+
+
+def _repack(src, xml_path, dst, pad=2):
+    """Trim transparent borders, merge pixel-identical frames, re-pack tighter.
+
+    Rendering is unchanged: frame names, order, source sizes and on-screen offsets are kept
+    (frameX/frameY/frameWidth/frameHeight are rewritten to compensate for trimming) and the
+    texture scale is untouched. Returns (ok, reason, info). Writes dst only on success.
+    """
+    import hashlib
+    try:
+        tree = ET.parse(xml_path)
+    except Exception as e:
+        return False, "atlas XML unreadable (%s)" % type(e).__name__, None
+    subs = [e for e in tree.getroot().iter() if _tag(e) == "SubTexture"]
+    if not subs:
+        return False, "atlas has no frames", None
+    im = Image.open(src)
+    im.load()
+    if getattr(im, "n_frames", 1) > 1:
+        return False, "animated PNG", None
+    if im.mode not in ("RGBA", "LA", "P"):
+        return False, "image has no alpha channel, nothing to trim", None
+    if im.mode != "RGBA":
+        im = im.convert("RGBA")
+    W0, H0 = im.size
+    rect_info = {}   # (x,y,w,h) -> (bx, by, tw, th, uid)
+    uniq, digest_uid, frames = [], {}, []
+    for e in subs:
+        if str(e.get("rotated", "false")).lower() == "true":
+            return False, "rotated frames are not supported", None
+        try:
+            x, y, w, h = (_num(e, k) for k in ("x", "y", "width", "height"))
+            fx, fy = _num(e, "frameX", 0), _num(e, "frameY", 0)
+            fw, fh = _num(e, "frameWidth", w), _num(e, "frameHeight", h)
+        except (ValueError, TypeError):
+            return False, "non-integer or missing atlas values", None
+        if None in (x, y, w, h) or w <= 0 or h <= 0 or x < 0 or y < 0 or x + w > W0 or y + h > H0:
+            return False, "a frame lies outside the image", None
+        key = (x, y, w, h)
+        if key not in rect_info:
+            sub = im.crop((x, y, x + w, y + h))
+            bb = sub.getchannel("A").getbbox()
+            if bb is None:
+                tr, bx, by = Image.new("RGBA", (1, 1), (0, 0, 0, 0)), 0, 0
+            else:
+                tr, bx, by = sub.crop(bb), bb[0], bb[1]
+            dg = (tr.size, hashlib.blake2b(tr.tobytes(), digest_size=16).digest())
+            if dg not in digest_uid:
+                digest_uid[dg] = len(uniq)
+                uniq.append((tr, dg))
+            rect_info[key] = (bx, by, tr.size[0], tr.size[1], digest_uid[dg])
+        frames.append((e, key, fx, fy, fw, fh, "frameX" in e.attrib or "frameWidth" in e.attrib))
+    del im
+    items = [(i, u[0].size[0], u[0].size[1]) for i, u in enumerate(uniq)]
+    widest = max(w for _, w, _ in items)
+    best = None
+    for k in range(0, 25):
+        limit = max(widest, int(widest + (W0 - widest) * k / 24.0)) if W0 > widest else widest
+        pos, pw, ph = _pack_shelf(items, pad, limit)
+        pw, ph = (pw + 3) // 4 * 4, (ph + 3) // 4 * 4
+        cand = (pw * ph, max(pw, ph), limit, pos, pw, ph)
+        if best is None or cand[:2] < best[:2]:
+            best = cand
+    _, _, _, pos, NW, NH = best
+    if NW * NH > 0.95 * W0 * H0:
+        return False, "already tightly packed", None
+    canvas = Image.new("RGBA", (NW, NH), (0, 0, 0, 0))
+    for i, (tr, _) in enumerate(uniq):
+        canvas.paste(tr, pos[i])
+    for e, key, fx, fy, fw, fh, had in frames:
+        bx, by, tw, th, uid = rect_info[key]
+        px, py = pos[uid]
+        e.set("x", str(px)); e.set("y", str(py)); e.set("width", str(tw)); e.set("height", str(th))
+        nf = (fx - bx, fy - by, fw, fh)
+        if had or nf != (0, 0, tw, th):
+            e.set("frameX", str(nf[0])); e.set("frameY", str(nf[1]))
+            e.set("frameWidth", str(nf[2])); e.set("frameHeight", str(nf[3]))
+    # verify: every packed frame reads back identical, nothing overlaps or leaves the canvas
+    for i, (tr, dg) in enumerate(uniq):
+        x, y = pos[i]
+        if x + tr.size[0] > NW or y + tr.size[1] > NH:
+            return False, "internal check failed (bounds)", None
+        back = canvas.crop((x, y, x + tr.size[0], y + tr.size[1]))
+        if hashlib.blake2b(back.tobytes(), digest_size=16).digest() != dg[1]:
+            return False, "internal check failed (pixels)", None
+    canvas.save(dst, "PNG", optimize=True)
+    import io
+    buf = io.BytesIO()
+    tree.write(buf, encoding="utf-8", xml_declaration=True)
+    return True, "", {"xml": buf.getvalue(), "size": (NW, NH), "frames": len(frames),
+                      "unique": len(uniq), "from": (W0, H0)}
+
+
+def _sha1(path):
+    import hashlib
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def _duplicates(pngs):
+    """Informational only: identical PNG files at different paths. They cannot be merged
+    (paths must stay), but each one is a separate texture in memory."""
+    by_size = {}
+    for rel, p, size in pngs:
+        by_size.setdefault(size, []).append((rel, p))
+    groups, wasted = [], 0
+    for lst in by_size.values():
+        if len(lst) < 2:
+            continue
+        by_hash = {}
+        for rel, p in lst:
+            by_hash.setdefault(_sha1(p), []).append((rel, p))
+        for g in by_hash.values():
+            if len(g) > 1:
+                try:
+                    with Image.open(g[0][1]) as im:
+                        wasted += (len(g) - 1) * im.size[0] * im.size[1] * 4
+                except Exception:
+                    pass
+                groups.append([r for r, _ in g])
+    return {"groups": len(groups), "decoded_bytes_wasted": wasted, "examples": groups[:5]}
+
+
 def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
     progress = progress or _noop
     if strength not in LEVELS:
@@ -236,6 +392,7 @@ def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
     if os.path.realpath(out_zip).startswith(input_dir + os.sep):
         raise ValueError("output must not be inside the mod folder")
     max_dim = LEVELS[strength]["max_dim"]
+    repack_on = LEVELS[strength]["repack"]
 
     progress("Scanning", 0, 0, "")
     files, empty_dirs, notes = scan(input_dir)
@@ -249,7 +406,8 @@ def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
     work = tempfile.mkdtemp(prefix="flab_", dir=os.path.dirname(out_zip))
     repl = {}  # rel -> ("file", path) | ("bytes", data)
     details = []
-    counts = {"optimized": 0, "resized": 0, "skipped": 0, "failed": 0}
+    counts = {"optimized": 0, "resized": 0, "repacked": 0, "skipped": 0, "failed": 0}
+    tex_b, tex_a, dims_a, reason_of = {}, {}, {}, {}
 
     def add(file, action, note="", before=0, after=0):
         if len(details) < MAX_DETAILS:
@@ -259,37 +417,72 @@ def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
         for i, (rel, p, size) in enumerate(pngs):
             progress("Optimizing images", i, len(pngs), rel)
             tmp = os.path.join(work, "p%d.png" % i)
+            rtmp = os.path.join(work, "r%d.png" % i)
             note = ""
             try:
                 with Image.open(p) as probe:
                     w, h = probe.size
+                w0, h0 = w, h
+                tex_b[rel] = tex_a[rel] = w * h * 4
+                dims_a[rel] = (w, h)
                 if w * h > MAX_PIXELS:
                     counts["skipped"] += 1
+                    reason_of[rel] = "too large to process safely on a phone"
                     add(rel, "skipped", "image too large to process safely on a phone (%dx%d)" % (w, h), size, size)
                     continue
+                cur, cur_xml, rp_note, rp_info = p, None, "", None
+                if repack_on:
+                    xmls = atlas_map.get(rel.lower(), [])
+                    if len(xmls) == 1:
+                        pad = 4 if (max_dim and max(w, h) > max_dim) else 2
+                        ok, why, rp_info = _repack(p, abs_of[xmls[0]], rtmp, pad)
+                        if ok:
+                            cur, cur_xml = rtmp, rp_info["xml"]
+                            w, h = rp_info["size"]
+                            rp_note = "repacked %dx%d -> %dx%d (%d frames, %d unique)" % (
+                                w0, h0, w, h, rp_info["frames"], rp_info["unique"])
+                        else:
+                            note = "not repacked: " + why
                 done = False
                 if max_dim and max(w, h) > max_dim:
-                    ok, why, plan = _plan_resize(rel, (w, h), max_dim, atlas_map, char_map, files, abs_of)
+                    ok, why, plan = _plan_resize(rel, (w, h), max_dim, atlas_map, char_map, files, abs_of, cur_xml)
                     if ok:
-                        new_size = _resize_save(p, tmp, plan["nw"], plan["nh"])
+                        new_size = _resize_save(cur, tmp, plan["nw"], plan["nh"])
                         repl[rel] = ("file", tmp)
                         repl[plan["xml_rel"]] = ("bytes", plan["xml"])
                         for jr, jb in plan["jsons"].items():
                             repl[jr] = ("bytes", jb)
                         counts["resized"] += 1
                         counts["optimized"] += 1
-                        add(rel, "resized", "%dx%d -> %dx%d, atlas XML and %d character JSON updated (not tested in-game)"
-                            % (w, h, plan["nw"], plan["nh"], len(plan["jsons"])), size, new_size)
+                        if rp_info:
+                            counts["repacked"] += 1
+                        tex_a[rel] = plan["nw"] * plan["nh"] * 4
+                        dims_a[rel] = (plan["nw"], plan["nh"])
+                        reason_of[rel] = "resized"
+                        add(rel, "resized", "%s%dx%d -> %dx%d, atlas XML and %d character JSON updated (not tested in-game)"
+                            % (rp_note + "; " if rp_note else "", w, h, plan["nw"], plan["nh"], len(plan["jsons"])), size, new_size)
                         done = True
                     else:
-                        note = why
+                        note = (rp_note + "; " if rp_note else "") + why
                 if done:
                     continue
+                if rp_info:  # repacked, not resized
+                    repl[rel] = ("file", cur)
+                    repl[atlas_map[rel.lower()][0]] = ("bytes", cur_xml)
+                    counts["optimized"] += 1
+                    counts["repacked"] += 1
+                    tex_a[rel] = w * h * 4
+                    dims_a[rel] = (w, h)
+                    reason_of[rel] = (why if max_dim and max(w, h) > max_dim else "within size target") if max_dim else "resize off at this strength"
+                    add(rel, "repacked", rp_note + (("; " + why) if max_dim and max(w, h) > max_dim else ""), size, os.path.getsize(cur))
+                    continue
                 ok, why = _lossless(p, tmp)
+                reason_of[rel] = (note or why) if max_dim and max(w, h) > max_dim else (
+                    note or ("within size target" if max_dim else "resize off at this strength"))
                 if ok:
                     repl[rel] = ("file", tmp)
                     counts["optimized"] += 1
-                    add(rel, "optimized", note or "lossless, pixel-identical", size, os.path.getsize(tmp))
+                    add(rel, "optimized", note or "lossless, pixel-identical (no memory change)", size, os.path.getsize(tmp))
                 else:
                     counts["skipped"] += 1
                     add(rel, "skipped", (note + "; " if note else "") + why, size, size)
@@ -298,7 +491,12 @@ def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
                     raise
                 counts["failed"] += 1
                 repl.pop(rel, None)
+                if rel in tex_b:
+                    tex_a[rel] = tex_b[rel]
+                reason_of[rel] = "failed, original kept"
                 add(rel, "failed", "%s: %s - original kept" % (type(e).__name__, e), size, size)
+
+        dup = _duplicates(pngs)
 
         part = out_zip + ".part"
         names = []
@@ -349,9 +547,17 @@ def optimize_mod(input_dir, out_zip, strength="balanced", progress=None):
         return {
             "ok": valid, "strength": strength, "validation_ok": valid, "problems": problems[:20],
             "files_total": len(files), "images_total": len(pngs), "optimized": counts["optimized"],
-            "resized": counts["resized"], "skipped": counts["skipped"], "failed": counts["failed"],
+            "resized": counts["resized"], "repacked": counts["repacked"], "skipped": counts["skipped"], "failed": counts["failed"],
             "refs_updated": len(repl) - counts["optimized"], "bytes_before": before, "bytes_after": after,
             "notes": notes[:20], "details": details,
+            # decoded texture memory = width*height*4 per image: an upper bound for in-game RAM
+            # (only textures actually loaded count). Not a measurement of the game itself.
+            "texture_bytes_before": sum(tex_b.values()), "texture_bytes_after": sum(tex_a.values()),
+            "top_remaining_textures": [
+                {"file": r, "w": dims_a[r][0], "h": dims_a[r][1], "mb": round(tex_a[r] / 1048576.0, 1),
+                 "reason": reason_of.get(r, "")}
+                for r in sorted(tex_a, key=lambda k: -tex_a[k])[:15] if r in dims_a],
+            "duplicate_textures": dup,
         }
     finally:
         shutil.rmtree(work, ignore_errors=True)

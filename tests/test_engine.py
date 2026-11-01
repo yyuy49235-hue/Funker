@@ -111,9 +111,11 @@ class TestEngine(Base):
 
     def test_lua_reference_blocks_resize(self):
         self.w("scripts/x.lua", b"makeLuaSprite('s','characters/bf',0,0)")
+        _, rb = self.run_engine("balanced")
+        self.assertEqual(rb["resized"], 0)
+        self.assertTrue(any("referenced by scripts/x.lua" in d["note"] for d in rb["details"]))
         z, rep = self.run_engine("maximum")
         self.assertEqual(rep["resized"], 0)
-        self.assertTrue(any("referenced by scripts/x.lua" in d["note"] for d in rep["details"]))
         with zipfile.ZipFile(z) as zf:
             self.assertEqual(json.loads(zf.read("characters/bf.json"))["scale"], 1)
 
