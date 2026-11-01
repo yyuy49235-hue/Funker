@@ -1,28 +1,42 @@
+
 name: Build APK
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: "17" }
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.11" }
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
       - name: Engine tests
         run: |
           pip install Pillow
           python run_tests.py
-      - uses: gradle/actions/setup-gradle@v4
-        with: { gradle-version: "8.7" }
+
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: "8.7"
+
       - name: Build debug APK
         run: gradle --no-daemon :app:assembleDebug
+
       - name: Record commit
         run: echo "${{ github.sha }}" > app/build/outputs/apk/debug/BUILT_FROM_COMMIT.txt
-      - uses: actions/upload-artifact@v4
+
+      - uses: actions/upload-artifact@v6
         with:
           name: FunkerLiteLab-debug-apk
           path: |
