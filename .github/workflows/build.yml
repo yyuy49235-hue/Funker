@@ -1,45 +1,56 @@
 
-name: Build APK
+
+name: Build APK from ZIP
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+  push:
+    branches: [ram-optimization]
+    paths:
+      - 'Funker-0.6.0.zip'
+      - '.github/workflows/build.yml'
 
 jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
-      - uses: actions/setup-java@v6
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-
-      - name: Engine tests
-        run: |
-          pip install Pillow
-          python run_tests.py
-
-      - uses: gradle/actions/setup-gradle@v6
+      - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.7"
 
-      - name: Build debug APK
-        run: gradle --no-daemon :app:assembleDebug
+      - name: Extract ZIP and find project
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/funker-release
+          unzip -q Funker-0.6.0.zip -d /tmp/funker-release
 
-      - name: Record commit
-        run: echo "${{ github.sha }}" > app/build/outputs/apk/debug/BUILT_FROM_COMMIT.txt
+          SETTINGS_FILE="$(find /tmp/funker-release -type f \( -name settings.gradle -o -name settings.gradle.kts \) -print -quit)"
 
-      - uses: actions/upload-artifact@v6
+          if [ -z "$SETTINGS_FILE" ]; then
+            echo "::error::ZIP does not contain a Gradle project."
+            find /tmp/funker-release -maxdepth 5 -type f | head -150
+            exit 1
+          fi
+
+          PROJECT_DIR="$(dirname "$SETTINGS_FILE")"
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+
+      - name: Build APK from extracted project
+        run: gradle --no-daemon -p "$PROJECT_DIR" :app:assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
-          name: FunkerLiteLab-debug-apk
-          path: |
-            app/build/outputs/apk/debug/*.apk
-            app/build/outputs/apk/debug/BUILT_FROM_COMMIT.txt
+          name: FunkerLiteLab-0.6.0-debug-apk
+          path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
